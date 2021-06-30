@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(89, 194, 138);
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    margin: 1em;
+}
+
+.greeting {
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    border: 6px white solid;
+    border-radius: 1em;
+    margin: .5em;
+}
+
+#logo {
+    font-size: 2em;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+}
+
+
+.goals-container {
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+}
+
+h2 {
+    font-size: 4em;
+}
