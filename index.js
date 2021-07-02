@@ -17,10 +17,6 @@ closeBtn.addEventListener('click', function() {
     modal.style.display = "none";
 });
 
-// window.addEventListener('click', function() {
-//     modal.style.display = "none";
-// });
-
 
 // function getGoals() {
 //     fetch(endPoint)
