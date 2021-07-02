@@ -6,15 +6,19 @@ const endPoint = "http://localhost:3000/api/v1/goals"
 // create modal
 
 let modalBtn = document.getElementById("modal-btn");
-let modal = document.getElementById("sl-modal")
-let closeBtn = document.getElementById("close-btn")
+let modal = document.getElementById("sl-modal");
+let closeBtn = document.getElementById("close-btn");
 
-modalBtn.onclick = function() {
+modalBtn.addEventListener('click', function() {
     modal.style.display = "block";
-}
+});
 
-// modalBtn.addEventListener('click', function() {
-//     document.getElementById('modal').classList.add('is-visible');
+closeBtn.addEventListener('click', function() {
+    modal.style.display = "none";
+});
+
+// window.addEventListener('click', function() {
+//     modal.style.display = "none";
 // });
 
 

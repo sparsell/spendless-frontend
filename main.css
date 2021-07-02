@@ -20,21 +20,20 @@ body {
 }
 
 #modal-btn {
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    justify-content: center;
     margin: 1em;
 }
 
 .modal {
     display: none;
-    position: fixed;
+    /* position: fixed; */
     padding: 1em;
     margin: auto;
     width: 50%;
     height: 50%;
     background-color: grey;
     overflow: auto;
-
 }
 
 .modal-content {
@@ -58,6 +57,11 @@ body {
     color: black;
 }
 
+.modal-body {
+    font-size: 1em;
+    color: black;
+}
+
 .close-btn:hover,
 .close-btn:focus  {
     color: darkgray;  
@@ -66,10 +70,10 @@ body {
 }
 
 /* JS */
-/* .is-visible {
+.is-visible {
     opacity: 1;
     pointer-events: auto;
-} */
+}
 
 /* .goals-container {
     /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
