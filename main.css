@@ -20,31 +20,30 @@ body {
 }
 
 #modal-btn {
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
     margin: 1em;
 }
 
 .modal {
     display: none;
     position: fixed;
-    padding-top: 2em;
-    /* left: 0;
-    top: 0; */
+    padding: 1em;
+    margin: auto;
     width: 50%;
     height: 50%;
-    background-color: rgba(0,0,0);
-    background-color: rgb(0,0,0, 0.5);
-    /* overflow: auto; */
+    background-color: grey;
+    overflow: auto;
 
 }
 
 .modal-content {
     background-color: white;
     padding: 1em;
-    border: 1px solid #888222;  
-    width: 80%;
-    height: 80%;
+    margin: auto;
+    border: 1px solid #888;  
+    /* width: 80%; */
+    height: 90%;
 }
 
 .close-btn {
@@ -52,6 +51,11 @@ body {
     color: lightgrey;
     font-size: 1em;
     font-weight: bold;
+}
+
+.modal-header {
+    font-size: 1.2em;
+    color: black;
 }
 
 .close-btn:hover,
