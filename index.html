@@ -11,52 +11,56 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
     </head>
     <body>
-        
-        <!-- logo -->
-        <div class="greeting">
-            <h3>Spend <span id="logo"> < </span> Less</h3>
-        </div>
-
-        <!-- button to open modal -->
-        <button class="button is-primary" id="modal-btn"> How does this work?</button>
-
-        <!-- modal -->
-        <div id="sl-modal" class='modal'>
-
-            <!-- modal-content -->
+        <container>
+            <!-- logo -->
+            <div class="greeting">
+                <h3>Spend <span id="logo">
+                        < </span> Less</h3>
+            </div>
+            
+            <!-- button to open modal -->
+            <button class="button is-primary" id="modal-btn"> How does this work?</button>
+            
+            <!-- modal -->
+            <div id="sl-modal" class='modal'>
+            
+                <!-- modal-content -->
                 <div class="modal-content">
                     <header class="modal-header">
                         <div class="notification">
                             <button class="delete"></button>
-                            Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.
-                            Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur.
+                            <p><strong>They say what you focus on, you create more of.</strong></p>
+                            <p>Spendless is not a budget app; it subtly motivates you to make better spending choices, by showing
+                                you how little
+                                decisions througout the day can really add up to not a little amount of money you never knew you
+                                had.</p>
                         </div>
                         <span id="close-btn">&times;</span>
-                        <p>They say what you focus on, you create more of.</p>
+                        <p></p>
                     </header>
                     <div class="modal-body">
-                        <p>Spendless is not a budget app; it subtly motivates you to make better spending choices, by showing you how little
-                            decisions througout the day can really add up to not a little amount of money you never knew you had. </p>
+                        <p> </p>
                     </div>
-                        
-                   
+            
+            
                 </div>
-
+            
             </div>
-
+            
             
             <!--create goal  -->
-
-        <div id='goal-container'>
-            <h3>How much less do you want to spend?</h3>
-            <p>Enter your goal:</p>
-        </div>
-
-        <!-- show total -->
-        <div id='total-container'>
-            <h3>Total:</h3>
-        </div>
+            
+            <div id='goal-container'>
+                <h3>How much less do you want to spend?</h3>
+                <p>Enter your goal:</p>
+            </div>
+            
+            <!-- show total -->
+            <div id='total-container'>
+                <h3>Total:</h3>
+            </div>
+        </container>
+        
         
         <script type="text/javascript" src="index.js"></script>
     </body>

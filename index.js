@@ -17,7 +17,8 @@ const endPoint = "http://localhost:3000/api/v1/goals"
 
 let modalBtn = document.getElementById("modal-btn");
 let modal = document.getElementById("sl-modal");
-let closeBtn = document.getElementById("close-btn");
+// let closeBtn = document.getElementById("close-btn");
+let closeBtn = document.getElementsByClassName("delete");
 
 modalBtn.addEventListener('click', function() {
     modal.style.display = "block";
