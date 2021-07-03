@@ -7,7 +7,8 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="main.css">
+        <!-- <link rel="stylesheet" href="main.css"> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
     </head>
     <body>
         
@@ -17,7 +18,7 @@
         </div>
 
         <!-- button to open modal -->
-        <button id="modal-btn"> How does this work?</button>
+        <button class="button is-primary" id="modal-btn"> How does this work?</button>
 
         <!-- modal -->
         <div id="sl-modal" class='modal'>
@@ -25,6 +26,12 @@
             <!-- modal-content -->
                 <div class="modal-content">
                     <header class="modal-header">
+                        <div class="notification">
+                            <button class="delete"></button>
+                            Lorem ipsum dolor sit amet, consectetur
+                            adipiscing elit lorem ipsum dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla.
+                            Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur.
+                        </div>
                         <span id="close-btn">&times;</span>
                         <p>They say what you focus on, you create more of.</p>
                     </header>
@@ -37,6 +44,8 @@
                 </div>
 
             </div>
+
+            
             <!--create goal  -->
 
         <div id='goal-container'>
