@@ -10,16 +10,15 @@
         <!-- <link rel="stylesheet" href="main.css"> -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
     </head>
-    <body>
-        <container>
+    <body class="has-background-grey-lighter">
+        <container class="wrapper has-text-centered m-5">
             <!-- logo -->
-            <div class="greeting">
-                <h3>Spend <span id="logo">
-                        < </span> Less</h3>
+            <div class="hero m-5 mt-5">
+                <h1 class="title has-text-primary is-size-1">Spend < Less</h1>
             </div>
             
             <!-- button to open modal -->
-            <button class="button is-primary" id="modal-btn"> How does this work?</button>
+            <div class='is-center'><button class="button is-primary is-center display-block" id="modal-btn"> How does this work?</button></div>
             
             <!-- modal -->
             <div id="sl-modal" class='modal'>
@@ -41,41 +40,69 @@
                     </div>
                 </div>
             </div>
-
-            <!-- alternative modal -->
-            <div class="modal">
-                <div class="modal-background"></div>
-                <div class="modal-content">
-                    <!-- Any other Bulma elements you want -->
-                </div>
-                <button class="modal-close is-large" aria-label="close"></button>
-            </div>
             
             
             <!--create goal  -->
-            
-            <section class="seciton">
-                <div id='goal-container'>
-                    <h3>How much less do you want to spend?</h3>
-                    <p>Enter your goal:</p>
-                </div>
+
+            <section class="goal is-medium box m-5 p-5">
+                <h2 class="title">My Goal:</h2>
+                <input class="input is-primary" type="text" style="width: 45%" placeholder="Enter a number, e.g., 250">
+                <p >(In other words, how much do you want to <strong>save</strong>?)</p>
             </section>
 
-            <section class="section is-medium">
-                <h1 class="title">Medium section</h1>
-                <h2 class="subtitle">
-                    A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
-                </h2>
+            <br>
+
+            <!-- create new spendless amount -->
+            <section class="sl-amount box section is-primary m-5 p-5">
+                <h3 class="title">I spent <input class="input is-primary" type="text" style="width: 35%" placeholder="Enter a number, e.g., 12.50"> less by <input class="input is-primary" size="5" type="textarea" style="width: 65%"
+                    placeholder="e.g., by not ordering a dessert"> .</h3>
+
+                    <button class="button is-primary">Add to total</button>
+            
+            
+                        
             </section>
+
+            <!--show total  -->
             
+            <section class="total box section is-medium m-5 p-5">
+                <h2 class="title">Total saved so far</h2> 
+                <h2 class="title">[show total]</h2>
+                
+                <progress class="progress is-primary" value="15" max="100">30%</progress>
+            </section>
+
+            <section class="sl-amounts section is-small ">
+                <h4 class="title">You spent less on all of these items. Great job!</h4>
             
-            <!-- show total -->
-            <div id='total-container'>
-                <h3>Total:</h3>
+            </section>
+
+            <!-- button creates cards for each spendless amount -->
+
+
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+            
+                        </div>
+                    </div>
+                    <div class="content">
+                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                    </div>
+                </div>
             </div>
-        </container>
-        
-        
+
+            <div class="tile">
+                <!-- The magical tile element! -->
+            </div>
+    
+
         <script type="text/javascript" src="index.js"></script>
     </body>
 </html>

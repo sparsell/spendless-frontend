@@ -2,14 +2,5 @@
 @import "bulma/sass/utilities/_all.sass";
 @import "bulma/sass/grid/columns.sass";
 
-body {
-    background-color: $grey-dark;
-    font-size: 16px;
-}
 
-#modal-btn {
-    display: flex;
-    justify-content: center;
-    margin: 1em;
-}
 
