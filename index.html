@@ -17,35 +17,26 @@
                 <h1 class="title has-text-primary is-size-1">Spend < Less</h1>
             </div>
             
-            <!-- button to open modal -->
-            <div class='is-center'><button class="button is-primary is-center display-block" id="modal-btn"> How does this work?</button></div>
-            
             <!-- modal -->
+            <div class='is-center'><button class="button is-primary is-center display-block" id="modal-btn"> How does it work?</button></div>
+            
             <div id="sl-modal" class='modal'>
-                <!-- modal-content -->
-                <div class="modal-content">
-                    <header class="modal-header">
-                        <div class="notification">
-                            <button class="delete"></button>
-                            <p><strong>They say what you focus on, you create more of.</strong></p>
-                            <p>Spendless is not a budget app; it subtly motivates you to make better spending choices, by showing
-                                you how little
-                                decisions througout the day can really add up to not a little amount of money you never knew you
-                                had.</p>
-                        </div>
-                        <span id="close-btn">&times;</span>
-                        <p></p>
-                    </header>
-                    <div class="modal-body">
-                    </div>
-                </div>
+                 <!-- modal -->
+                <!-- <div class="modal-background"></div> -->
+                    <div class="modal-content">
+                        <p><strong>They say what you focus on, you create more of.</strong></p>
+                        <p>Spendless is not a budget app; it subtly motivates you to make better spending choices, by showing you how little decisions througout the day can really add up to not a little amount of money you never knew you had.</p>
+                        <button class="delete"></button>
+                    </div>"
             </div>
-            
-            
-            <!--create goal  -->
+          
+            <!--STRETCH GOAL - create image modal  -->
+
+
+            <!--First section: create / display goal  -->
 
             <section class="goal is-medium box m-5 p-5">
-                <h2 class="title">My Goal:</h2>
+                <h2 class="title">My Goal</h2>
                 <input class="input is-primary" type="text" style="width: 45%" placeholder="Enter a number, e.g., 250">
                 <p >(In other words, how much do you want to <strong>save</strong>?)</p>
             </section>
@@ -54,26 +45,32 @@
 
             <!-- create new spendless amount -->
             <section class="sl-amount box section is-primary m-5 p-5">
-                <h3 class="title">I spent <input class="input is-primary" type="text" style="width: 35%" placeholder="Enter a number, e.g., 12.50"> less by <input class="input is-primary" size="5" type="textarea" style="width: 65%"
+                <h2 class="title">I Spent Less</h2>
+                <h3>I spent 
+                    <input class="input is-primary mb-2" id="spendless_amount"type="text" style="width: 35%" placeholder="Enter a number, e.g., 12.50"> less by 
+                        <input class="input is-primary" id="spendless_detail" type="textarea" style="width: 65%"
                     placeholder="e.g., by not ordering a dessert"> .</h3>
 
-                    <button class="button is-primary">Add to total</button>
-            
-            
-                        
+                    <button class="button is-primary">Add to total</button>     
             </section>
 
             <!--show total  -->
             
             <section class="total box section is-medium m-5 p-5">
-                <h2 class="title">Total saved so far</h2> 
-                <h2 class="title">[show total]</h2>
+                <h2 class="title">Total Not Spent</h2> 
+                <h2 class="subtitle">[e.g., $120.00]</h2>
                 
+                <!-- STRETCH - show progress bar -->
+                <!-- STRETCH - show random encouraging messages below progress bar -->
+
                 <progress class="progress is-primary" value="15" max="100">30%</progress>
+                <h4 class="subtitle">You're making great choices. Keep it up!</h4>
             </section>
 
             <section class="sl-amounts section is-small ">
-                <h4 class="title">You spent less on all of these items. Great job!</h4>
+                <h4 class="title">Want to see how you are spending less? </h4>
+                <button class="is-primary mb-5 p-2">See where you spent less</button>
+                    <h4 class="subtitle">Now, what will you do with your savings?</h4>
             
             </section>
 
