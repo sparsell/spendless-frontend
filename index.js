@@ -1,5 +1,8 @@
 const endPoint = "http://localhost:3000/api/v1/goals"
 
+document.addEventListener('DOMContentLoaded', function() {
+    getGoals();
+}, false); 
 
 // ***create modal***
 const modal = document.getElementById("sl-modal");
@@ -14,27 +17,19 @@ closeBtn.addEventListener('click', function() {
     modal.style.display = 'none';
 });
 
-
 // ***Goal section***//
 // at open, ask for the user to set a goal:
-// if goal already set, display it (GET)
-
-// fetch goal (use IF statement:
-// IF goal.amount > 0, goal.amount
+// IF goal already exists (e.g., > 0), display it (GET)
 // ELSE, ask user to set the amount)
 
+function getGoals() {
+    fetch(endPoint)
+        .then(response => response.json())
+        .then(goals => {
 
+            })
+        }
 
-// document.addEventListener('DOMContentLoaded', () => getGoals())
-// function getGoals() {
-//     fetch(endPoint)
-//         .then(response => response.json())
-//         .then(goals => {
-//             goals.data.forEach(goal => {
-//                 const goalCard = 
-//             })
-//         })
-// }
 
 
 
@@ -44,6 +39,15 @@ closeBtn.addEventListener('click', function() {
 // user enters a number in the first input (spendless_amounts.amount) and a brief description in the second input (need to add spendless_amounts.detail)
 // button "add to total" initiates fetch request to POST to db the amount and detail
 
+let  
+
+document.addEventListener('click', () =>
+addSpendlessAmount())
+
+function addSpendLessAmount(amount, description) {
+
+}
+
 // also, adds the spendless_amount.amount to the total.total lol...
 
 // ***Total section***//
@@ -51,3 +55,5 @@ closeBtn.addEventListener('click', function() {
 // no input; updates automatically
 // 
 
+// see where you are spending less
+// creates tiles for each spendless_amount (like Pokemon lab)
