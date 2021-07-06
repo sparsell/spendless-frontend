@@ -18,15 +18,17 @@
             </div>
             
             <!-- modal -->
-            <div class='is-center'><button class="button is-primary is-center display-block" id="modal-btn"> How does it work?</button></div>
+            <div class='is-center'>
+                <button class="button is-primary is-center display-block" id="modal-btn"> How does it work?</button>
+            </div>
             
             <div id="sl-modal" class='modal'>
                  <!-- modal -->
-                <!-- <div class="modal-background"></div> -->
-                    <div class="modal-content">
+                <!-- <div class="modal-background has-text-primary-dark"></div> -->
+                    <div class="modal-content box">
                         <p><strong>They say what you focus on, you create more of.</strong></p>
                         <p>Spendless is not a budget app; it subtly motivates you to make better spending choices, by showing you how little decisions througout the day can really add up to not a little amount of money you never knew you had.</p>
-                        <button class="delete"></button>
+                        <button id="delete" class="delete"></button>
                     </div>"
             </div>
           
@@ -49,7 +51,7 @@
                         <input class="input is-primary" id="spendless_detail" type="textarea" style="width: 65%"
                     placeholder="e.g., by not ordering a dessert"> .</h3>
 
-                    <button class="button is-primary">Add to total</button>     
+                    <button id="total-button" class="button is-primary">Add to total</button>     
             </section>
 
             <!--show total  -->
@@ -67,29 +69,15 @@
 
             <section class="sl-amounts section is-small ">
                 <h4 class="title">Want to see how you are spending less? </h4>
-                <button class="is-primary mb-5 p-2">See where you spent less</button>
-                    <h4 class="subtitle">Now, what will you do with your savings?</h4>
-            
+                <button class="is-primary mb-5 p-2">See where you spent less</button>   
             </section>
 
             <!-- button creates cards for each spendless amount -->
 
 
             <div class="card">
-                <div class="card-image">
-                    <figure class="image is-4by3">
-                        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                    </figure>
-                </div>
                 <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-            
-                        </div>
-                    </div>
-                    <div class="content">
-                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                    </div>
+                    <p>detail of each spend less amount, datestamp, etc.</p>
                 </div>
             </div>
 
@@ -97,6 +85,9 @@
                 <!-- The magical tile element! -->
             </div>
     
+            <footer class="footer m-4">
+                <h4 class="subtitle">Now, what will you do with your savings?</h4>
+            </footer>
 
         <script type="text/javascript" src="index.js"></script>
     </body>

@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const modal = document.getElementById("sl-modal");
 const modalBtn = document.getElementById("modal-btn");
 const closeBtn = document.getElementById("delete");
+const totalBtn = document.getElementById("button-total"); 
 
 modalBtn.addEventListener('click', function() {
     modal.style.display = 'block';
@@ -31,15 +32,12 @@ function getGoals() {
         }
 
 
-
-
-
 // ***Spend less amount section***//
 
 // user enters a number in the first input (spendless_amounts.amount) and a brief description in the second input (need to add spendless_amounts.detail)
 // button "add to total" initiates fetch request to POST to db the amount and detail
 
-let  
+
 
 document.addEventListener('click', () =>
 addSpendlessAmount())
