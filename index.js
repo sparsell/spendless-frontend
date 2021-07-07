@@ -1,8 +1,6 @@
-const endPoint = "http://localhost:3000/api/v1/goals"
-
-document.addEventListener('DOMContentLoaded', function() {
-    getGoals();
-}, false); 
+const goalEndPoint = "http://localhost:3000/api/v1/goals"
+const totalEndPoint = "http://localhost:3000/api/v1/totals"
+const spendlessAmountEndPoint = "http://localhost:3000/api/v1/spendless_amounts"
 
 // ***create modal***
 const modal = document.getElementById("sl-modal");
@@ -23,14 +21,30 @@ closeBtn.addEventListener('click', function() {
 // IF goal already exists (e.g., > 0), display it (GET)
 // ELSE, ask user to set the amount)
 
-function getGoals() {
-    fetch(endPoint)
-        .then(response => response.json())
-        .then(goals => {
+document.addEventListener('DOMContentLoaded', () => getGoal())
 
+function getGoal() {
+    fetch(goalEndPoint)
+    .then(res => res.json())
+    .then(goals => {
+        return goals;
             })
-        }
+        .catch(error => {
+            return error;
+    })
+}
 
+        // posts goal to db
+// function postGoal(goal_amount) {
+//     fetch(goalEndPoint, {
+//         method: "POST", 
+//         headers: {"Conetent-Type": "application/json"}, 
+//         body: JSON.stringify({
+//             goal_amount: goal_amount, 
+//             total_id: total_id
+//         })
+//     })
+// }
 
 // ***Spend less amount section***//
 
@@ -39,12 +53,12 @@ function getGoals() {
 
 
 
-document.addEventListener('click', () =>
-addSpendlessAmount())
+// document.addEventListener('click', () =>
+// addSpendlessAmount())
 
-function addSpendLessAmount(amount, description) {
+// function addSpendLessAmount(amount, description) {
 
-}
+// }
 
 // also, adds the spendless_amount.amount to the total.total lol...
 
@@ -54,4 +68,4 @@ function addSpendLessAmount(amount, description) {
 // 
 
 // see where you are spending less
-// creates tiles for each spendless_amount (like Pokemon lab)
+// creates tiles for each spendless_amount
