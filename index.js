@@ -21,7 +21,7 @@ closeBtn.addEventListener('click', function() {
 // IF goal already exists (e.g., > 0), display it (GET)
 // ELSE, ask user to set the amount)
 
-document.addEventListener('DOMContentLoaded', () => getGoal())
+document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal())
 
 function getGoal() {
     fetch(goalEndPoint)
@@ -29,6 +29,7 @@ function getGoal() {
     .then(goals => {
         // console.log(goals)
         goals.data.forEach( goal => {
+
             let goalDiv = document.createElement('div')
             let goalToggle = document.querySelector('.goal-toggle')
             goalDiv.innerText = "$" + goal.attributes.goal_amount
@@ -39,6 +40,8 @@ function getGoal() {
             return error;
     })
 } 
+
+
 
         // posts goal to db
 // function postGoal(goal_amount) {
@@ -71,7 +74,33 @@ function getGoal() {
 // ***Total section***//
 
 // no input; updates automatically
+function getTotal() {
+    fetch(totalEndPoint)
+    .then(res => res.json())
+    .then(totals => {
+        totals.data.forEach( total => {
+
+            let totalDiv = document.createElement('div')
+            let slTotal = document.querySelector('.sl-total')
+            totalDiv.innerText = "$" + total.attributes.total
+            slTotal.appendChild(totalDiv);
+        })
+    })
+    .catch(error => {
+            return error;
+    })
+} 
 // 
+
+// ***Spendless amounts section***//
+
+let slView = document.querySelector('.sl-button')
+    slView.addEventListener('click', viewSpendless())
+
+function viewSpendless() => {
+
+}
+
 
 // see where you are spending less
 // creates tiles for each spendless_amount
