@@ -27,18 +27,18 @@ function getGoal() {
     fetch(goalEndPoint)
     .then(res => res.json())
     .then(goals => {
-        return goals;
-            })
-        .catch(error => {
+        console.log(goals)
+    })
+    .catch(error => {
             return error;
     })
-}
+} 
 
         // posts goal to db
 // function postGoal(goal_amount) {
 //     fetch(goalEndPoint, {
 //         method: "POST", 
-//         headers: {"Conetent-Type": "application/json"}, 
+//         headers: {"Content-Type": "application/json"}, 
 //         body: JSON.stringify({
 //             goal_amount: goal_amount, 
 //             total_id: total_id
