@@ -27,7 +27,13 @@ function getGoal() {
     fetch(goalEndPoint)
     .then(res => res.json())
     .then(goals => {
-        console.log(goals)
+        // console.log(goals)
+        goals.data.forEach( goal => {
+            let goalDiv = document.createElement('div')
+            let goalToggle = document.querySelector('.goal-toggle')
+            goalDiv.innerText = "$" + goal.attributes.goal_amount
+            goalToggle.appendChild(goalDiv);
+        })
     })
     .catch(error => {
             return error;
