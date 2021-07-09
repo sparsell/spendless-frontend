@@ -97,9 +97,15 @@ function getTotal() {
 let slView = document.querySelector('.sl-button')
     slView.addEventListener('click', viewSpendless())
 
-function viewSpendless() => {
-
+function viewSpendless() {
+fetch(spendlessAmountEndPoint)
+.then(res => res.json())
+.then(amounts => {
+    // amounts.data.forEach(amount => {
+        console.log(amounts)
+    })
 }
+// }
 
 
 // see where you are spending less
