@@ -27,13 +27,19 @@ function getGoal() {
     fetch(goalEndPoint)
     .then(res => res.json())
     .then(goals => {
-        // console.log(goals)
+   
         goals.data.forEach( goal => {
+
+            // if goal.goal_amount !== 0 
+            // remove the input box and <p> comment
+            // and display the goal_amount
 
             let goalDiv = document.createElement('div')
             let goalToggle = document.querySelector('.goal-toggle')
+            let goalInput = document.querySelector('input')
             goalDiv.innerText = "$" + goal.attributes.goal_amount
-            goalToggle.appendChild(goalDiv);
+            goalToggle.appendChild(goalDiv)
+          
         })
     })
     .catch(error => {
@@ -43,7 +49,8 @@ function getGoal() {
 
 
 
-        // posts goal to db
+    // ***POST new user goal***
+
 // function postGoal(goal_amount) {
 //     fetch(goalEndPoint, {
 //         method: "POST", 
@@ -72,8 +79,8 @@ function getGoal() {
 // also, adds the spendless_amount.amount to the total.total lol...
 
 // ***Total section***//
-
 // no input; updates automatically
+
 function getTotal() {
     fetch(totalEndPoint)
     .then(res => res.json())
