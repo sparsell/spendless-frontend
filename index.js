@@ -30,15 +30,28 @@ function getGoal() {
    
         goals.data.forEach( goal => {
 
-            // if goal.goal_amount !== 0 
-            // remove the input box and <p> comment
-            // and display the goal_amount
-
             let goalDiv = document.createElement('div')
             let goalToggle = document.querySelector('.goal-toggle')
-            let goalInput = document.querySelector('input')
+            let goalInput = document.querySelector('goal-input')
             goalDiv.innerText = "$" + goal.attributes.goal_amount
             goalToggle.appendChild(goalDiv)
+            goalInput.style.display = "none";
+        })
+
+        // goals.data( goal => {
+
+        //     if (goal.attributes.goal_amount !== null) {
+        //     console.log("got it")
+            // let goalDiv = document.createElement('div')
+            // let goalToggle = document.querySelector('.goal-toggle')
+            // let goalInput = document.querySelector('goal-input')
+            // goalDiv.innerText = "$" + goal.attributes.goal_amount
+            // goalToggle.appendChild(goalDiv)
+            // goalInput.style.display = "none";
+            // } else {
+            //     console.log("enter a goal") 
+            // }
+        
           
         })
     })
