@@ -2,6 +2,9 @@ const goalEndPoint = "http://localhost:3000/api/v1/goals"
 const totalEndPoint = "http://localhost:3000/api/v1/totals"
 const spendlessAmountEndPoint = "http://localhost:3000/api/v1/spendless_amounts"
 
+
+document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal())
+
 // ***create modal***
 const modal = document.getElementById("sl-modal");
 const modalBtn = document.getElementById("modal-btn");
@@ -17,49 +20,40 @@ closeBtn.addEventListener('click', function() {
 });
 
 // ***Goal section***//
-// at open, ask for the user to set a goal:
 // IF goal already exists (e.g., > 0), display it (GET)
-// ELSE, ask user to set the amount)
-
-document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal())
+// ELSE, ask user to set the amount (POST))
 
 function getGoal() {
     fetch(goalEndPoint)
     .then(res => res.json())
     .then(goals => {
    
-        goals.data.forEach( goal => {
+        // goals.data.forEach( goal => {
+        //     let goalDiv = document.createElement('div')
+        //     let goalToggle = document.querySelector('.goal-toggle')
+        //     let goalInput = document.querySelector('.goal-input')
+        //     goalDiv.innerText = "$" + goal.attributes.goal_amount
+        //     goalToggle.appendChild(goalDiv)
+        //     goalInput.style.display = "none";
+        // })
 
+        goals.data.forEach( goal => {
+            if (goal.attributes.goal_amount) {
             let goalDiv = document.createElement('div')
             let goalToggle = document.querySelector('.goal-toggle')
-            let goalInput = document.querySelector('goal-input')
+            let goalInput = document.querySelector('.goal-input')
             goalDiv.innerText = "$" + goal.attributes.goal_amount
             goalToggle.appendChild(goalDiv)
             goalInput.style.display = "none";
-        })
-
-        // goals.data( goal => {
-
-        //     if (goal.attributes.goal_amount !== null) {
-        //     console.log("got it")
-            // let goalDiv = document.createElement('div')
-            // let goalToggle = document.querySelector('.goal-toggle')
-            // let goalInput = document.querySelector('goal-input')
-            // goalDiv.innerText = "$" + goal.attributes.goal_amount
-            // goalToggle.appendChild(goalDiv)
-            // goalInput.style.display = "none";
-            // } else {
-            //     console.log("enter a goal") 
-            // }
-        
-          
+            } else {
+                console.log("enter a goal") 
+            }
         })
     })
     .catch(error => {
             return error;
     })
-} 
-
+}
 
 
     // ***POST new user goal***
@@ -82,14 +76,12 @@ function getGoal() {
 
 
 
-// document.addEventListener('click', () =>
-// addSpendlessAmount())
+document.addEventListener('click', () =>
+addSpendlessAmount())
 
-// function addSpendLessAmount(amount, description) {
+function addSpendLessAmount(amount, description) {
 
-// }
-
-// also, adds the spendless_amount.amount to the total.total lol...
+}
 
 // ***Total section***//
 // no input; updates automatically
@@ -99,7 +91,6 @@ function getTotal() {
     .then(res => res.json())
     .then(totals => {
         totals.data.forEach( total => {
-
             let totalDiv = document.createElement('div')
             let slTotal = document.querySelector('.sl-total')
             totalDiv.innerText = "$" + total.attributes.total
@@ -112,19 +103,19 @@ function getTotal() {
 } 
 // 
 
-// ***Spendless amounts section***//
+// ***View Spendless amounts section***//
 
-let slView = document.querySelector('.sl-button')
-    slView.addEventListener('click', viewSpendless())
+// let slView = document.querySelector('.sl-button')
+//     slView.addEventListener('click', viewSpendless())
 
-function viewSpendless() {
-fetch(spendlessAmountEndPoint)
-.then(res => res.json())
-.then(amounts => {
-    // amounts.data.forEach(amount => {
-        console.log(amounts)
-    })
-}
+// function viewSpendless() {
+// fetch(spendlessAmountEndPoint)
+// .then(res => res.json())
+// .then(amounts => {
+//     // amounts.data.forEach(amount => {
+//         console.log(amounts)
+//     })
+// }
 // }
 
 

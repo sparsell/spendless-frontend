@@ -23,40 +23,40 @@
             </div>
             
             <div id="sl-modal" class='modal'>
-                 <!-- modal -->
-                <!-- <div class="modal-background has-text-primary-dark"></div> -->
-                    <div class="modal-content box">
-                        <p><strong>They say what you focus on, you create more of.</strong></p>
-                        <p>Spendless is not a budget app; it subtly motivates you to make better spending choices, by showing you how little decisions througout the day can really add up to not a little amount of money you never knew you had.</p>
-                        <button id="delete" class="delete"></button>
-                    </div>"
+                <div class="modal-content box">
+                    <p><strong>They say what you focus on, you create more of.</strong></p>
+                    <p>Spendless is not a budget app; it subtly motivates you to make better spending choices, by showing you how little decisions througout the day can really add up to not a little amount of money you never knew you had.</p>
+                    <button id="delete" class="delete"></button>
+                </div>"
             </div>
 
 
             <!--First section: create / display goal  -->
+            <!--STRETCH GOAL - create image for goal  -->
 
             <section class="goal-section is-small box m-5 p-5">
                 <div class="goal-toggle subtitle m-5 fa-file-text">
-                    <h3 class="goal-title title m-5">MY GOAL</h3>
+                    <h3 class="goal-title title m-5">Spend < Less GOAL</h3>
                     <input class="goal-input input  is-primary m-5" type="text" style="width: 45%" placeholder="Enter a number, e.g., 250">
                 </div>
-                <h3 class="title">SPENT LESS TOTAL</h3>
-                <h2 class="sl-total subtitle"></h2>
-                
-                <!-- STRETCH - show progress bar -->
-                <!-- STRETCH - show random encouraging messages below progress bar -->
-                
-                <progress class="progress is-primary" value="15" max="100">30%</progress>
-                <h4 class="subtitle">You're making great choices. Keep it up!</h4>
-                <h2>Spend <span>insert</span> less to reach your goal!</h2>
-                
             </section>
 
-            <!--STRETCH GOAL - create image for goal  -->
+            <!--Second section: display total  -->
+            <!-- STRETCH - show progress bar (goal - total) linked to completion-->
+            <!-- STRETCH - show random encouraging messages below progress bar -->
+            <!-- <progress class="progress is-primary" value="15" max="100">30%</progress> -->
+            <!-- <h4 class="subtitle">You're making great choices. Keep it up!</h4> -->
+            <section class="total-section is-small box m-5 p-5">
+                <div>
+                    <h3 class="title">Spend > Less TOTAL</h3>
+                    <h2 class="sl-total subtitle p-5"></h2>
+                    <h2 class="subtitle">Spend <span>[insert]</span> less to reach your goal!</h2>
+                </div>
+            </section>
 
-            <!-- create new spendless amount -->
-            <section class="sl-amount box section is-primary m-5 p-5">
-                <h2 class="title">I SPENT LESS</h2>
+            <!-- Third section: create new spendless amount -->
+            <section class="sl-amount is-small box is-primary m-5 p-5">
+                <h2 class="title">I Spent < Less</h2>
                 <h3>I spent 
                     <input class="input is-primary mb-2" id="spendless_amount"type="text" style="width: 35%" placeholder="Enter a number, e.g., 12.50"> less by 
                         <input class="input is-primary" id="spendless_detail" type="textarea" style="width: 65%"
@@ -64,26 +64,12 @@
 
                     <button id="total-button" class="button is-primary">Add to total</button>     
             </section>
-
-            <!--show total  -->
-            
-            <section class="total box section is-medium m-5 p-5">
-                <h2 class="title">TOTAL NOT SPENT</h2> 
-                <h2 class="sl-total subtitle"></h2>
-                
-                <!-- STRETCH - show progress bar -->
-                <!-- STRETCH - show random encouraging messages below progress bar -->
-
-                <progress class="progress is-primary" value="15" max="100">30%</progress>
-                <h4 class="subtitle">You're making great choices. Keep it up!</h4>
-            </section>
-
+            <!-- spendless amounts in detail -->
+            <!-- button creates cards for each spendless amount -->
             <section class="sl-amounts section is-small ">
                 <h4 class="title">Want to see how you are spending less? </h4>
                 <button class="sl-button is-primary mb-5 p-2">See where you spent less</button>   
             </section>
-
-            <!-- button creates cards for each spendless amount -->
 
 
             <div class="card">
