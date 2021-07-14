@@ -20,25 +20,15 @@ closeBtn.addEventListener('click', function() {
 });
 
 // ***Goal section***//
-// IF goal already exists (e.g., > 0), display it (GET)
+// IF goal exists, display it (GET)
 // ELSE, ask user to set the amount (POST))
 
 function getGoal() {
     fetch(goalEndPoint)
     .then(res => res.json())
     .then(goals => {
-   
-        // goals.data.forEach( goal => {
-        //     let goalDiv = document.createElement('div')
-        //     let goalToggle = document.querySelector('.goal-toggle')
-        //     let goalInput = document.querySelector('.goal-input')
-        //     goalDiv.innerText = "$" + goal.attributes.goal_amount
-        //     goalToggle.appendChild(goalDiv)
-        //     goalInput.style.display = "none";
-        // })
-
         goals.data.forEach( goal => {
-            if (goal.attributes.goal_amount) {
+            if (goal.attributes.goal_amount > 500) {
             let goalDiv = document.createElement('div')
             let goalToggle = document.querySelector('.goal-toggle')
             let goalInput = document.querySelector('.goal-input')
@@ -121,3 +111,13 @@ function getTotal() {
 
 // see where you are spending less
 // creates tiles for each spendless_amount
+
+
+        // goals.data.forEach( goal => {
+        //     let goalDiv = document.createElement('div')
+        //     let goalToggle = document.querySelector('.goal-toggle')
+        //     let goalInput = document.querySelector('.goal-input')
+        //     goalDiv.innerText = "$" + goal.attributes.goal_amount
+        //     goalToggle.appendChild(goalDiv)
+        //     goalInput.style.display = "none";
+        // })
