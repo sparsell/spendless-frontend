@@ -36,7 +36,7 @@ function getGoal() {
             goalToggle.appendChild(goalDiv)
             goalInput.style.display = "none";
             } else {
-                console.log("enter a goal") 
+                // console.log("enter a goal") 
             }
         })
     })
@@ -45,19 +45,27 @@ function getGoal() {
     })
 }
 
-
     // ***POST new user goal***
+const newGoalBtn = document.querySelector(".goal-button")
+newGoalBtn.addEventListener('click', postNewGoal)
 
-// function postGoal(goal_amount) {
-//     fetch(goalEndPoint, {
-//         method: "POST", 
-//         headers: {"Content-Type": "application/json"}, 
-//         body: JSON.stringify({
-//             goal_amount: goal_amount, 
-//             total_id: total_id
-//         })
-//     })
-// }
+function postNewGoal(goal_amount) {
+    fetch(goalEndPoint, {
+        method: "POST", 
+        headers: {"Content-Type": "application/json"}, 
+        body: JSON.stringify({
+            goal_amount: goal_amount, 
+            total_id: total_id
+        })
+    })
+    .then(resp => resp.json())
+    .then(goals => {
+        const goal = goals.data
+        let newGoal = new goal(goal_amount, goal.attributes)
+
+        document.querySelector('.goal-input').innerText("Done")
+    })
+}
 
 // ***Spend less amount section***//
 
@@ -66,12 +74,12 @@ function getGoal() {
 
 
 
-document.addEventListener('click', () =>
-addSpendlessAmount())
+// document.addEventListener('click', () =>
+// addSpendlessAmount())
 
-function addSpendLessAmount(amount, description) {
+// function addSpendLessAmount(amount, description) {
 
-}
+// }
 
 // ***Total section***//
 // no input; updates automatically
