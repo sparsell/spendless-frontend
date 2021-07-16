@@ -54,16 +54,14 @@ function postNewGoal(goal_amount) {
         method: "POST", 
         headers: {"Content-Type": "application/json"}, 
         body: JSON.stringify({
-            goal_amount: goal_amount, 
-            total_id: total_id
+            goal_amount: goal_amount
         })
     })
     .then(resp => resp.json())
-    .then(goals => {
-        const goal = goals.data
-        let newGoal = new goal(goal_amount, goal.attributes)
-
-        document.querySelector('.goal-input').innerText("Done")
+    .then(goal => {
+        let goalData = goal.data;
+        let newGoal = new Goal(goalData, goalData.attributes)
+        // document.querySelector('.goal-input').innerText("Done")
     })
 }
 
