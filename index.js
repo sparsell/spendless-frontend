@@ -28,7 +28,7 @@ function getGoal() {
     .then(res => res.json())
     .then(goals => {
         goals.data.forEach( goal => {
-            if (goal.attributes.goal_amount > 500) {
+            if (goal.attributes.goal_amount < 500) {
             let goalDiv = document.createElement('div')
             let goalToggle = document.querySelector('.goal-toggle')
             let goalInput = document.querySelector('.goal-input')
@@ -52,16 +52,19 @@ newGoalBtn.addEventListener('click', postNewGoal)
 function postNewGoal(goal_amount) {
     fetch(goalEndPoint, {
         method: "POST", 
-        headers: {"Content-Type": "application/json"}, 
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }, 
         body: JSON.stringify({
             goal_amount: goal_amount
         })
     })
     .then(resp => resp.json())
     .then(goal => {
-        let goalData = goal.data;
+        let goalData = goal.data
         let newGoal = new Goal(goalData, goalData.attributes)
-        // document.querySelector('.goal-input').innerText("Done")
+   
     })
 }
 
