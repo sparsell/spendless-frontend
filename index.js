@@ -28,15 +28,13 @@ function getGoal() {
     .then(res => res.json())
     .then(goals => {
         goals.data.forEach( goal => {
-            if (goal.attributes.goal_amount < 500) {
+            if (goal.attributes.goal_amount) {
             let goalDiv = document.createElement('div')
             let goalToggle = document.querySelector('.goal-toggle')
             let goalInput = document.querySelector('.goal-input')
             goalDiv.innerText = "$" + goal.attributes.goal_amount
             goalToggle.appendChild(goalDiv)
             goalInput.style.display = "none";
-            } else {
-                // console.log("enter a goal") 
             }
         })
     })
@@ -47,9 +45,13 @@ function getGoal() {
 
     // ***POST new user goal***
 const newGoalBtn = document.querySelector(".goal-button")
-newGoalBtn.addEventListener('click', postNewGoal)
+    newGoalBtn.addEventListener('click', () => {
+    const goal_amount = document.querySelector("#goal-input").value
+    postNewGoal(goal_amount)})
 
-function postNewGoal(goal_amount) {
+
+    function postNewGoal(goal_amount) {
+   // debugger
     fetch(goalEndPoint, {
         method: "POST", 
         headers: {
@@ -63,10 +65,18 @@ function postNewGoal(goal_amount) {
     .then(resp => resp.json())
     .then(goal => {
         let goalData = goal.data
-        let newGoal = new Goal(goalData, goalData.attributes)
-   
+       // let newGoal = new Goal(goalData, goalData.attributes)
+        // debugger
+        // if (goal.attributes.goal_amount) {
+            let goalDiv = document.createElement('div')
+            let goalToggle = document.querySelector('.goal-toggle')
+            let goalInput = document.querySelector('.goal-input')
+            goalDiv.innerText = "$" + goal.goal_amount
+            goalToggle.appendChild(goalDiv)
+            goalInput.style.display = "none";
     })
 }
+
 
 // ***Spend less amount section***//
 
