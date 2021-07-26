@@ -45,10 +45,10 @@ function getGoal() {
 
     // ***POST new user goal***
 const newGoalBtn = document.querySelector(".goal-button")
+
     newGoalBtn.addEventListener('click', () => {
     const goal_amount = document.querySelector("#goal-input").value
     postNewGoal(goal_amount)})
-
 
     function postNewGoal(goal_amount) {
    // debugger
@@ -83,14 +83,17 @@ const newGoalBtn = document.querySelector(".goal-button")
 // user enters a number in the first input (spendless_amounts.amount) and a brief description in the second input (need to add spendless_amounts.detail)
 // button "add to total" initiates fetch request to POST to db the amount and detail
 
+const newSpendlessButton = document.querySelector("#new-sl-button")
 
+newSpendlessButton.addEventListener("click", () => {
+    const spendless_amount = document.querySelector("#spendless-amount").value
+    const spendless_detail = document.querySelector("#spendless-detail").value
+    addSpendlessAmount(spendless_amount, spendless_detail)
+    })
 
-// document.addEventListener('click', () =>
-// addSpendlessAmount())
+// function addSpendlessAmount(spendless_amount, spendless_detail) {
 
-// function addSpendLessAmount(amount, description) {
-
-// }
+// // }
 
 // ***Total section***//
 // no input; updates automatically
