@@ -28,10 +28,11 @@ function getGoal() {
     fetch(goalEndPoint)
     .then(res => res.json())
     .then(goals => {
-        // debugger
+        //    debugger
         for (let goal of goals) {
-            // debugger
-            if (goal.attributes.goal_amount) {
+          
+            if (goal.data.goal_amount) {
+               
             // if (goal.data[i].attributes.goal_amount) {
             let goalDiv = document.createElement('div')
             let goalToggle = document.querySelector('.goal-toggle')
@@ -91,6 +92,7 @@ newSpendlessButton.addEventListener("click", () => {
     const spendless_amount = document.querySelector("#spendless-amount-input").value
     const spendless_detail = document.querySelector("#spendless-detail-input").value
     postSpendlessAmount(spendless_amount, spendless_detail)
+    clearInput()
     })
 
 function postSpendlessAmount(spendless_amount, spendless_detail) {
@@ -111,8 +113,13 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
             // debugger
             let new_sl_amount = document.querySelector("sl-amounts")
             let slDiv = document.createElement("div")
-            slDiv.innerText = `${new_sl_amount}`
+            slDiv.innerText = `${sl_amount}`
         })
+    }
+
+    const clearInput = function () {
+        spendless_amount.value = ""
+        spendless_detail.value = ""
     }
 
 // ***Total section***//
@@ -137,30 +144,27 @@ function getTotal() {
 
 // ***VIEW Spendless amounts section***//
 
-// let slView = document.querySelector('.sl-button')
-//     slView.addEventListener('click', viewSpendless())
+const viewSlBtn = document.querySelector(".sl-button")
 
-// function viewSpendless() {
-// fetch(spendlessAmountEndPoint)
-// .then(res => res.json())
-// .then(amounts => {
-//     // amounts.data.forEach(amount => {
-//         console.log(amounts)
-//     })
-// }
-// }
+viewSlBtn.addEventListener("click", function () {
+    showSlAmounts()
+})
 
+function showSlAmounts() {
+    fetch(spendlessAmountEndPoint)
+    .then(res => res.json())
+    .then(spendless_amounts => {
+        spendless_amounts.data.forEach( sl_amount => {
+            let spendlessAmountsDiv = document.createElement('div')
+            const closeSLBtn = document.createElement('button')
+            spendlessAmountsDiv.classList.add("card")
+            let spendlessAmountsContent = document.createElement('div')
+            spendlessAmountsContent.classList.add("card-content")
+            let spendlessAmount = document.querySelector(".card-content")
+            spendlessAmountsDiv.innerHTML = `<h2 class="title is-4"> Amount: $${sl_amount.attributes.amount}  Description:${sl_amount.attributes.description}</h2>` 
+            spendlessAmount.appendChild(spendlessAmountsDiv)
+            spendlessAmountsDiv.appendChild(closeSLBtn)
+        })
+    })
+}
 
-// see where you are spending less
-// creates tiles for each spendless_amount
-
-   // goals.data.forEach( goal => {
-        //     if (goal.attributes.goal_amount) {
-        //     let goalDiv = document.createElement('div')
-        //     let goalToggle = document.querySelector('.goal-toggle')
-        //     let goalInput = document.querySelector('.goal-input')
-        //     goalDiv.innerText = "$" + goal.attributes.goal_amount
-        //     goalToggle.appendChild(goalDiv)
-        //     goalInput.style.display = "none";
-        //     }
-        // })
