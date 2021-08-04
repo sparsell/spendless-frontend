@@ -9,13 +9,15 @@ const modalBtn = document.getElementById("modal-btn");
 const closeBtn = document.getElementById("delete");
 const totalBtn = document.getElementById("button-total"); 
 
+// *** goal */
 const goalInput = document.querySelector(".goal-input")
+const newGoalBtn = document.querySelector(".goal-button")
+const goal_amount = document.querySelector("#goal-input").value
 
-//*** spendless amount input */
+//*** spendless amount */
 const newSpendlessButton = document.querySelector("#new-sl-button")
 let spendless_amount = document.querySelector("#spendless-amount-input")
 let spendless_detail = document.querySelector("#spendless-detail-input")
-
 
 
 //*** start program */
@@ -31,14 +33,13 @@ closeBtn.addEventListener('click', function() {
 
 // ***Goal section***//
 
-
-
+// get goal
 function getGoal() {
     fetch(goalEndPoint)
     .then(res => res.json())
     .then(goals => {
      goals.data.forEach ( goal => {
-       render(goal)
+       renderGoal(goal)
         })
     })
     .catch(error => {
@@ -46,27 +47,10 @@ function getGoal() {
     })
 }
 
-function render(goal) {
-    // if (goal !== 0) {
-    if (goal > 500) {
-    let goalDiv = document.createElement('div')
-    let goalTotal = document.querySelector('.goal-display')
-    goalDiv.innerText = "$" + goal.attributes.goal_amount
-    goalTotal.appendChild(goalDiv)
-    goalInput.style.display = "none"
-    } else {
-        let setGoal = document.createElement('p')
-        let setGoalMsg = document.querySelector('.goal-input-msg')
-        setGoal.innerText = "Please set a goal"
-        setGoalMsg.appendChild(setGoal)
-    }
-}
-
-    // ***PUT/PATCH goal***
-const newGoalBtn = document.querySelector(".goal-button")
+    // PUT/PATCH goal
 
     newGoalBtn.addEventListener('click', () => {
-        const goal_amount = document.querySelector("#goal-input").value
+        // const goal_amount = document.querySelector("#goal-input").value
         postGoal(goal_amount)
     })
 
@@ -83,19 +67,49 @@ const newGoalBtn = document.querySelector(".goal-button")
         })
     })
     .then(resp => resp.json())
-    .then(goal => {
-        // let goalData = goal.data
-       
-        let goalDiv = document.createElement('div')
-        let goalToggle = document.querySelector('.goal-toggle')
-        let goalInput = document.querySelector('.goal-input')
-        goalDiv.innerText = "$" + goal.goal_amount
-        goalToggle.appendChild(goalDiv)
-        goalInput.style.display = "none";
-        //  debugger
+    .then(goals => {
+     goals.data.forEach ( goal => {
+       renderGoal(goal)
+        })
+    })
+    .catch(error => {
+            return error;
     })
 }
 
+function renderGoal(goal) {
+    if (goal === 0) {
+    let goalDiv = document.createElement('div')
+    let goalTotal = document.querySelector('.goal-display')
+    goalDiv.innerText = "$" + goal.attributes.goal_amount
+    goalTotal.appendChild(goalDiv)
+    goalInput.style.display = "none"
+    } else {
+        let setGoal = document.createElement('p')
+        let setGoalMsg = document.querySelector('.goal-input-msg')
+        setGoal.innerText = "(Please set a goal)"
+        setGoalMsg.appendChild(setGoal)
+    }
+}
+
+// ***Total section***//
+// no input; updates automatically
+
+function getTotal() {
+    fetch(totalEndPoint)
+    .then(res => res.json())
+    .then(totals => {
+        totals.data.forEach( total => {
+            let totalDiv = document.createElement('div')
+            let slTotal = document.querySelector('.sl-total')
+            totalDiv.innerText = "$" + total.attributes.total
+            slTotal.appendChild(totalDiv);
+        })
+    })
+    .catch(error => {
+            return error;
+    })
+} 
 
 // ***Spend less amount section***//
 
@@ -120,10 +134,10 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
     })
         .then(resp => resp.json())
             .then(sl_amount => {
-            // debugger
-            let new_sl_amount = document.querySelector("sl-amounts")
+            // let new_sl_amount = document.querySelector("sl-amounts")
             let slDiv = document.createElement("div")
             slDiv.innerText = `${sl_amount}`
+            clearInput()
         })
     }
 
@@ -132,24 +146,7 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
         spendless_detail.value = ""
     }
 
-// ***Total section***//
-// no input; updates automatically
 
-function getTotal() {
-    fetch(totalEndPoint)
-    .then(res => res.json())
-    .then(totals => {
-        totals.data.forEach( total => {
-            let totalDiv = document.createElement('div')
-            let slTotal = document.querySelector('.sl-total')
-            totalDiv.innerText = "$" + total.attributes.total
-            slTotal.appendChild(totalDiv);
-        })
-    })
-    .catch(error => {
-            return error;
-    })
-} 
 // 
 
 // ***VIEW Spendless amounts section***//
@@ -164,6 +161,12 @@ function showSlAmounts() {
     fetch(spendlessAmountEndPoint)
     .then(res => res.json())
     .then(spendless_amounts => {
+        renderSpendlessAmounts(spendless_amounts)   
+        })
+        spendlessAmountsDiv.appendChild(closeSLBtn)
+    }
+
+function renderSpendlessAmounts(spendless_amounts) {
         spendless_amounts.data.forEach( sl_amount => {
             let spendlessAmountsDiv = document.createElement('div')
             const closeSLBtn = document.createElement('button')
@@ -173,15 +176,8 @@ function showSlAmounts() {
             let spendlessAmount = document.querySelector(".card-content")
             spendlessAmountsDiv.innerHTML = `<h2 class="title is-4"> Amount: $${sl_amount.attributes.amount}  Description:${sl_amount.attributes.description}</h2>` 
             spendlessAmount.appendChild(spendlessAmountsDiv)
-            
         })
-        spendlessAmountsDiv.appendChild(closeSLBtn)
-    })
-}
-
-
-
-
+    }
 
    //     let goalDiv = document.createElement('div')
         //     let goalToggle = document.querySelector('.goal-toggle')
