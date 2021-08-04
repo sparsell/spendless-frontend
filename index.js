@@ -100,16 +100,20 @@ function getTotal() {
     .then(res => res.json())
     .then(totals => {
         totals.data.forEach( total => {
-            let totalDiv = document.createElement('div')
-            let slTotal = document.querySelector('.sl-total')
-            totalDiv.innerText = "$" + total.attributes.total
-            slTotal.appendChild(totalDiv);
+            renderTotal(total) 
         })
     })
     .catch(error => {
             return error;
     })
 } 
+
+function renderTotal(total) {
+    let totalDiv = document.createElement('div')
+        let slTotal = document.querySelector('.sl-total')
+        totalDiv.innerText = "$" + total.attributes.total
+        slTotal.appendChild(totalDiv);
+}
 
 // ***Spend less amount section***//
 
@@ -163,13 +167,12 @@ function showSlAmounts() {
     .then(spendless_amounts => {
         renderSpendlessAmounts(spendless_amounts)   
         })
-        spendlessAmountsDiv.appendChild(closeSLBtn)
     }
 
 function renderSpendlessAmounts(spendless_amounts) {
         spendless_amounts.data.forEach( sl_amount => {
             let spendlessAmountsDiv = document.createElement('div')
-            const closeSLBtn = document.createElement('button')
+            
             spendlessAmountsDiv.classList.add("card")
             let spendlessAmountsContent = document.createElement('div')
             spendlessAmountsContent.classList.add("card-content")
@@ -177,6 +180,8 @@ function renderSpendlessAmounts(spendless_amounts) {
             spendlessAmountsDiv.innerHTML = `<h2 class="title is-4"> Amount: $${sl_amount.attributes.amount}  Description:${sl_amount.attributes.description}</h2>` 
             spendlessAmount.appendChild(spendlessAmountsDiv)
         })
+        const closeSLBtn = document.createElement('button')
+        spendlessAmountsContent.appendChild(closeSLBtn)
     }
 
    //     let goalDiv = document.createElement('div')
