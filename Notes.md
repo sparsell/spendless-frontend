@@ -1,4 +1,4 @@
-TODO: 
+
 
 GOAL:
     [] Work out association:
@@ -22,21 +22,28 @@ SPENDLESS_AMOUNT:
         - make it a modal?
         - show $ with decimal and cents                                
 
+TODO: 
 
-1. Goal is set to '0' automatically at start
-2. Total is set to '0' automatically at start
-3. Total belongs_to Goal
-4. To 'set' the Goal, user enters amount and hits 'submit'
---> creates an POST fetch to 'edit' action in goal controller
+1. [x]Goal is set to '0' automatically at start GET/fetch
+    ??? - use 'seeds' file to do this? 
+
+2. [x]Total is set to '0' automatically at start GET/fetch
+    ??? - use 'seeds' file to do this?
+
+3. [x]Total belongs_to Goal
+
+4. []To 'set' the Goal, user enters amount and hits 'submit'
+    [] --> creates a POST/fetch to 'edit' action in goal controller
 
 5. User enters a Spendless Amount:
     RAILS:
-    [] At 'submit', POST fetch to 'create' action on spendlessAmounts Controller
+    [x] At 'submit', POST/fetch to 'create' action on spendlessAmounts Controller
     [] automatically assigned to Total (belongs_to) 'create' action
        [] Spendlesss Amount is added to Total in db
        ? How to capture the current state of Total after this SL amount has been added?
 
     DOM:
     [] In DOM, 'card' is created and show in the browser (in fetch/POST method)
+    [] How to make it not repeat everytime you hit the button?
     [] method in Spendless Model (scope method?)
     [] in DOM, comparison is displayed from Total v. Goal
