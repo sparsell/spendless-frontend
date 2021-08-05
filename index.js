@@ -1,5 +1,6 @@
 
 const goalEndPoint = "http://localhost:3000/api/v1/goals"
+const goalEditEndPoint = "http://localhost:3000/api/v1/goals/1"
 const totalEndPoint = "http://localhost:3000/api/v1/totals"
 const spendlessAmountEndPoint = "http://localhost:3000/api/v1/spendless_amounts"
 
@@ -12,12 +13,13 @@ const totalBtn = document.getElementById("button-total");
 // *** goal */
 const goalInput = document.querySelector(".goal-input")
 const newGoalBtn = document.querySelector(".goal-button")
-const goal_amount = document.querySelector("#goal-input").value
+// let goal_amount = document.querySelector("#goal-input").value
 
 //*** spendless amount */
 const newSpendlessButton = document.querySelector("#new-sl-button")
 let spendless_amount = document.querySelector("#spendless-amount-input")
 let spendless_detail = document.querySelector("#spendless-detail-input")
+const viewSlBtn = document.querySelector(".sl-button")
 
 
 //*** start program */
@@ -50,14 +52,14 @@ function getGoal() {
     // PUT/PATCH goal
 
     newGoalBtn.addEventListener('click', () => {
-        // const goal_amount = document.querySelector("#goal-input").value
+        const goal_amount = document.querySelector("#goal-input").value
         postGoal(goal_amount)
     })
 
     function postGoal(goal_amount) {
-   // debugger
-    fetch(goalEndPoint, {
-        method: 'PUT', 
+        debugger
+    fetch(goalEditEndPoint, {
+        method: 'PATCH', 
         headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
@@ -78,7 +80,7 @@ function getGoal() {
 }
 
 function renderGoal(goal) {
-    if (goal === 0) {
+    if (goal !== 0) {
     let goalDiv = document.createElement('div')
     let goalTotal = document.querySelector('.goal-display')
     goalDiv.innerText = "$" + goal.attributes.goal_amount
@@ -109,10 +111,10 @@ function getTotal() {
 } 
 
 function renderTotal(total) {
-    let totalDiv = document.createElement('div')
+    // let totalDiv = document.createElement('div')
         let slTotal = document.querySelector('.sl-total')
-        totalDiv.innerText = "$" + total.attributes.total
-        slTotal.appendChild(totalDiv);
+        slTotal.innerText = total.attributes.total
+        // slTotal.appendChild(totalDiv);
 }
 
 // ***Spend less amount section***//
@@ -121,6 +123,7 @@ newSpendlessButton.addEventListener("click", () => {
     spendless_amount = spendless_amount.value
     spendless_detail = spendless_detail.value
     postSpendlessAmount(spendless_amount, spendless_detail)
+    // addSLtoTotal(spendless_amount)
     clearInput()
     })
 
@@ -150,12 +153,7 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
         spendless_detail.value = ""
     }
 
-
-// 
-
-// ***VIEW Spendless amounts section***//
-
-const viewSlBtn = document.querySelector(".sl-button")
+// VIEW Spendless amounts */
 
 viewSlBtn.addEventListener("click", function () {
     showSlAmounts()
@@ -172,7 +170,6 @@ function showSlAmounts() {
 function renderSpendlessAmounts(spendless_amounts) {
         spendless_amounts.data.forEach( sl_amount => {
             let spendlessAmountsDiv = document.createElement('div')
-            
             spendlessAmountsDiv.classList.add("card")
             let spendlessAmountsContent = document.createElement('div')
             spendlessAmountsContent.classList.add("card-content")
@@ -184,11 +181,8 @@ function renderSpendlessAmounts(spendless_amounts) {
         spendlessAmountsContent.appendChild(closeSLBtn)
     }
 
-   //     let goalDiv = document.createElement('div')
-        //     let goalToggle = document.querySelector('.goal-toggle')
-        //     let goalInput = document.querySelector('.goal-input')
-        //     goalDiv.innerText = "$" + goal.attributes.goal_amount
-        //     goalToggle.appendChild(goalDiv)
-        //     goalInput.style.display = "none";
-        //     }
-        // }
+function addSLtoTotal(spendless_amount) {
+    // add a new spendless_amount.value to the current total
+    // 
+
+    }
