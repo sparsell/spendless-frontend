@@ -97,6 +97,7 @@ function renderGoal(goal) {
 // ***Total section***//
 // no input; updates automatically
 
+
 function getTotal() {
     fetch(totalEndPoint)
     .then(res => res.json())
@@ -166,6 +167,8 @@ function showSlAmounts() {
         renderSpendlessAmounts(spendless_amounts)   
         })
     }
+
+// [ ] Translate JSON responses into JavaScript model objects using ES6 class or constructor function syntax.
 
 function renderSpendlessAmounts(spendless_amounts) {
         spendless_amounts.data.forEach( sl_amount => {
