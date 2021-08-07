@@ -35,7 +35,7 @@ closeBtn.addEventListener('click', function() {
 
 // ***Goal section***//
 
-// get goal
+// get goal; db is seeded with goal = 0
 function getGoal() {
     fetch(goalEndPoint)
     .then(res => res.json())
@@ -49,7 +49,8 @@ function getGoal() {
     })
 }
 
-    // PUT/PATCH goal
+    // PUT/PATCH goal; if goal is 0, user has to enter a value; no other option to change after this
+    // STRETCH: add button when goal is met to reset to '0'
 
     newGoalBtn.addEventListener('click', () => {
         const goal_amount = document.querySelector("#goal-input").value
@@ -95,8 +96,7 @@ function renderGoal(goal) {
 }
 
 // ***Total section***//
-// no input; updates automatically
-
+// no input; Total is set to "0" when db is created via seeds.rb
 
 function getTotal() {
     fetch(totalEndPoint)
@@ -112,21 +112,41 @@ function getTotal() {
 } 
 
 function renderTotal(total) {
-    // let totalDiv = document.createElement('div')
         let slTotal = document.querySelector('.sl-total')
         slTotal.innerText = total.attributes.total
-        // slTotal.appendChild(totalDiv);
 }
+// ***STRETCH: Progress section***//
+
+
 
 // ***Spend less amount section***//
+// const clearInput = function () {
+//         spendless_amount.value = ""
+//         spendless_detail.value = ""
+//     }
 
-newSpendlessButton.addEventListener("click", () => {
-    spendless_amount = spendless_amount.value
-    spendless_detail = spendless_detail.value
-    postSpendlessAmount(spendless_amount, spendless_detail)
-    // addSLtoTotal(spendless_amount)
-    clearInput()
+// WIP: 
+newSpendlessButton.addEventListener("click", function(e) {
+    e.preventDefault()
+    createSL(e)
     })
+
+    function createSL(e) {
+        e.preventDefault()
+        spendless_amount = spendless_amount.value
+        spendless_detail = spendless_detail.value
+        postSpendlessAmount(spendless_amount, spendless_detail)
+        // addSLtoTotal(spendless_amount)
+        clearInput()
+    }
+
+// newSpendlessButton.addEventListener("click", () => {
+//     spendless_amount = spendless_amount.value
+//     spendless_detail = spendless_detail.value
+//     postSpendlessAmount(spendless_amount, spendless_detail)
+//     // addSLtoTotal(spendless_amount)
+//     clearInput()
+//     })
 
 function postSpendlessAmount(spendless_amount, spendless_detail) {
     fetch (spendlessAmountEndPoint, {
@@ -142,17 +162,17 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
     })
         .then(resp => resp.json())
             .then(sl_amount => {
-            // let new_sl_amount = document.querySelector("sl-amounts")
-            let slDiv = document.createElement("div")
-            slDiv.innerText = `${sl_amount}`
-            clearInput()
+            // let slDiv = document.createElement("div")
+            // slDiv.innerText = `${sl_amount}`
         })
+        .catch(err => alert(err))
     }
 
-    const clearInput = function () {
+    function clearInput() {
         spendless_amount.value = ""
         spendless_detail.value = ""
     }
+    
 
 // VIEW Spendless amounts */
 
@@ -180,8 +200,6 @@ function renderSpendlessAmounts(spendless_amounts) {
             spendlessAmountsDiv.innerHTML = `<h2 class="title is-4"> Amount: $${sl_amount.attributes.amount}  Description:${sl_amount.attributes.description}</h2>` 
             spendlessAmount.appendChild(spendlessAmountsDiv)
         })
-        const closeSLBtn = document.createElement('button')
-        spendlessAmountsContent.appendChild(closeSLBtn)
     }
 
 function addSLtoTotal(spendless_amount) {
