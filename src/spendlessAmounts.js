@@ -1,3 +1,5 @@
+
+
 class SpendlessAmount {
     constructor(amount, description) {
         this.amount = amount
