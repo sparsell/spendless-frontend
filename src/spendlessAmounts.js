@@ -1,9 +1,9 @@
-
-
 class SpendlessAmount {
-    constructor(amount, description) {
-        this.amount = amount
-        this.description = description
+    constructor(id, SpendlessAmountAttributes) {
+        this.id = id
+        this.amount = SpendlessAmountAttributes.amount
+        this.description = SpendlessAmountAttributes.description
+        SpendlessAmount.call.push(this)
         }
 
     showSpendlessAmount() {
@@ -11,8 +11,11 @@ class SpendlessAmount {
         <div data-id=${this.id} class="card-content">
             <h3> Amount: ${this.amount}</h3>
             <h3> Description: ${this.description}</h3> 
-        </div>`
-    }    
+        </div>
+        <br><br>`
+        }
     }
+
+    SpendlessAmount.all = []
 
 
