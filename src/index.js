@@ -16,10 +16,6 @@ const newGoalBtn = document.querySelector(".goal-button")
 // let goal_amount = document.querySelector("#goal-input").value
 
 //*** spendless amount */
-const newSpendlessButton = document.querySelector("#new-sl-button")
-let spendless_amount = document.querySelector("#spendless-amount-input")
-let spendless_detail = document.querySelector("#spendless-detail-input")
-const viewSlBtn = document.querySelector(".sl-button")
 
 
 //*** start program */
@@ -58,7 +54,6 @@ function getGoal() {
     })
 
     function postGoal(goal_amount) {
-        debugger
     fetch(goalEditEndPoint, {
         method: 'PATCH', 
         headers: {
@@ -120,13 +115,31 @@ function renderTotal(total) {
 
 
 // ***Spend less amount section***//
-// const clearInput = function () {
-//         spendless_amount.value = ""
-//         spendless_detail.value = ""
-//     }
+
+
+let createSpendlessAmtForm = document.querySelector("create-spendless-amount")
+const newSpendlessButton = document.querySelector("#new-sl-button")
+let spendless_amount = document.querySelector("#spendless-amount-input")
+let spendless_detail = document.querySelector("#spendless-detail-input")
+const viewSlBtn = document.querySelector(".sl-button")
+
+const clearInput = function () {
+        spendless_amount.value = ""
+        spendless_detail.value = ""
+    }
+
+// createSpendlessAmtForm.addEventListener('submit', (e) => createFormHandler(e))
+
+// function createFormHandler(e) {
+//     e.preventDefault()
+//     let spendless_amount = document.querySelector("#spendless-amount-input").value
+//     let spendless_detail = document.querySelector("#spendless-detail-input").value
+//     postSpendlessAmount(spendless_amount, spendless_detail)
+//     clearInput(amountInput, detailInput)
+// }
 
 // WIP: 
-newSpendlessButton.addEventListener("click", function(e) {
+newSpendlessButton.addEventListener('submit', function(e) {
     e.preventDefault()
     createSL(e)
     })
@@ -137,7 +150,10 @@ newSpendlessButton.addEventListener("click", function(e) {
         spendless_detail = spendless_detail.value
         postSpendlessAmount(spendless_amount, spendless_detail)
         // addSLtoTotal(spendless_amount)
-        clearInput()
+        const clearInput = function () {
+        spendless_amount.value = ""
+        spendless_detail.value = ""
+    }
     }
 
 // newSpendlessButton.addEventListener("click", () => {
@@ -149,6 +165,7 @@ newSpendlessButton.addEventListener("click", function(e) {
 //     })
 
 function postSpendlessAmount(spendless_amount, spendless_detail) {
+    debugger
     fetch (spendlessAmountEndPoint, {
         method: "POST",
         headers: {
@@ -168,11 +185,7 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
         .catch(err => alert(err))
     }
 
-    function clearInput() {
-        spendless_amount.value = ""
-        spendless_detail.value = ""
-    }
-    
+
 
 // VIEW Spendless amounts */
 
@@ -201,6 +214,16 @@ function renderSpendlessAmounts(spendless_amounts) {
             spendlessAmount.appendChild(spendlessAmountsDiv)
         })
     }
+
+    // function renderSpendlessAmounts(spendless_amounts) {
+    //     const spendlessMarkup = `
+    //     <div data-id=${spendless_amounts.id}>
+    //     <h3>$<spendless_amounts.attributes.amount</h3>
+    //     <h3>$<spendless_amounts.attributes.description</h3>
+    //     <button data-id=${spendless_amounts.id}>edit</button>
+    //     </div>
+    //     <br><br>`
+    // }
 
 function addSLtoTotal(spendless_amount) {
     // add a new spendless_amount.value to the current total
