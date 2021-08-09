@@ -79,12 +79,15 @@
             <!-- Third section: create new spendless amount -->
             <section class="sl-amount is-small box is-primary m-5 p-5">
                 <h2 class="title">I Spent < Less</h2>
-                <h3>I spent 
-                    <input id="spendless-amount-input" class="input is-primary mb-2"  type="number" style="width: 35%" placeholder="Enter a number, e.g., 12.50"> less by 
+                <form id="create-spendless-amount">
+                    <h3>I spent 
+                        <input id="spendless-amount-input" class="input is-primary mb-2"  type="number" style="width: 35%" placeholder="Enter a number, e.g., 12.50"> less by 
 
-                    <input id="spendless-detail-input" class="input is-primary"  type="textarea" style="width: 65%" placeholder="e.g., by not ordering a dessert"> .</h3>
+                        <input id="spendless-detail-input" class="input is-primary"  type="textarea" style="width: 65%" placeholder="e.g., by not ordering a dessert"> .
+                    </h3>
 
-                    <input id="new-sl-button" class="button is-primary" type="submit">Add to total</input>     
+                        <input id="new-sl-button" class="submit button is-primary m-2 p-2" type="submit"></input>  
+                </form>
             </section>
             <!-- spendless amounts in detail -->
             <!-- button creates cards for each spendless amount -->
