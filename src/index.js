@@ -175,12 +175,13 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
         })
     })
         .then(resp => resp.json())
-            .then(spendless_amounts => {
-                console.log(spendless_amount)
-                const sl_amountData = spendless_amounts.data
+            .then(sl_amount => {
                 debugger
-                let newSLData = new SpendlessAmount(sl_amountData, sl_amountData.attributes)
-                document.querySelector('.card-content').innerHTML =+ newSLData.renderSpendlessAmounts()
+                console.log(sl_amount)
+                // const sl_amountData = sl_amount.data
+                // debugger
+                let newSLData = new SpendlessAmount(sl_amount, sl_amount.attributes)
+                document.querySelector('.card-content').innerHTML += newSLData.renderSpendlessAmounts()
         })
         .catch(err => alert(err))
     }
@@ -190,31 +191,37 @@ const clearInput = function () {
         spendless_detail.value = ""
     }
 
-// VIEW Spendless amounts */
-const viewSlBtn = document.querySelector(".sl-button")
 
-viewSlBtn.addEventListener("click", function () {
-    showSlAmounts()
-})
+    // used a button to show spendless_amounts
+    // VIEW Spendless amounts */
+    
+// const viewSlBtn = document.querySelector(".sl-button")
 
-function showSlAmounts() {
-    fetch(spendlessAmountEndPoint)
-    .then(res => res.json())
-    .then(spendless_amounts => {
-        spendless_amounts.data.forEach( sl_amount => {
-        renderSpendlessAmounts(sl_amount)   
-        })
-    })
-}
+// viewSlBtn.addEventListener("click", function () {
+//     showSlAmounts()
+// })
 
-function renderSpendlessAmounts(spendless_amounts) {
+// function showSlAmounts() {
+//     fetch(spendlessAmountEndPoint)
+//     .then(res => res.json())
+//     .then(spendless_amounts => {
+//         spendless_amounts.data.forEach( sl_amount => {
+//         renderSpendlessAmounts(sl_amount)   
+//         })
+//     })
+// }
+
+function renderSpendlessAmounts(newSLData) {
             let spendlessAmountsDiv = document.createElement('div')
             spendlessAmountsDiv.classList.add("card")
+            spendlessAmountsDiv.classList.add("m-5")
+            spendlessAmountsDiv.classList.add("p-5")
             let spendlessAmountsContent = document.createElement('div')
             spendlessAmountsContent.classList.add("card-content")
             let spendlessAmount = document.querySelector(".card-content")
-            spendlessAmountsDiv.innerHTML = `<h2 class="title is-4"> Amount: $${sl_amount.attributes.amount}  Description:${sl_amount.attributes.description}</h2>` 
+            spendlessAmountsDiv.innerHTML = `<h2 class="title is-4"> Amount: $${newSLData.attributes.amount}  Description:${newSLData.attributes.description}</h2>` 
             spendlessAmount.appendChild(spendlessAmountsDiv)
+
         }
 
     // function renderSpendlessAmounts(spendless_amounts) {
