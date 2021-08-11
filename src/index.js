@@ -82,6 +82,7 @@ function renderGoal(goal) {
     .then(resp => resp.json())
     .then(goals => {
      goals.data.forEach ( goal => {
+         debugger
        renderGoal(goal)
         })
     })
@@ -130,39 +131,12 @@ function createFormHandler(e) {
     const spendless_amount = document.querySelector("#spendless-amount-input").value
     const spendless_detail = document.querySelector("#spendless-detail-input").value
     postSpendlessAmount(spendless_amount, spendless_detail)
-    clearInput(spendless_amount, spendless_detail)
+    clearInput(spendless_amount.value, spendless_detail.value)
 }
 
-// WIP: 
-// newSpendlessButton.addEventListener('submit', function(e) {
-//     e.preventDefault()
-//     createSL(e)
-//     })
 
-//  newSpendlessButton.addEventListener("click", (e) => {
-//     spendless_amount = spendless_amount.value
-//     spendless_detail = spendless_detail.value
-//     postSpendlessAmount(spendless_amount, spendless_detail)
-//     // addSLtoTotal(spendless_amount)
-//     clearInput()
-//     })
-
-//     function createSL(e) {
-//         e.preventDefault()
-//         spendless_amount = spendless_amount.value
-//         spendless_detail = spendless_detail.value
-//         postSpendlessAmount(spendless_amount, spendless_detail)
-//         // addSLtoTotal(spendless_amount)
-//         const clearInput = function () {
-//         spendless_amount.value = ""
-//         spendless_detail.value = ""
-//     }
-//     }
-
-//
 
 function postSpendlessAmount(spendless_amount, spendless_detail) {
-    debugger
     fetch (spendlessAmountEndPoint, {
         method: "POST",
         headers: {
@@ -176,50 +150,16 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
     })
         .then(resp => resp.json())
             .then(sl_amount => {
-                debugger
                 console.log(sl_amount)
-                // const sl_amountData = sl_amount.data
-                // debugger
-                let newSLData = new SpendlessAmount(sl_amount, sl_amount.attributes)
-                const newRow = document.createElement('tr')
-                const dateRow = document.createElement('td')
-                const amountRow = document.createElement('td')
-                const descriptionRow = document.createElement('td')
-                dateRow.newSLData.
-        })
-        .catch(err => alert(err))
+                debugger
+                const sl_amountData = sl_amount.data
+                let newSLData = new SpendlessAmount(sl_amountData, sl_amountData.attributes)
+    
+                })   
+            .catch(err => alert(err)) 
     }
 
 const clearInput = function () {
-        spendless_amount.value = ""
-        spendless_detail.value = ""
+    spendless_amount.value = ""
+    spendless_detail.value = ""
     }
-
-function renderSpendlessAmounts(newSLData) {
-            let spendlessAmountsDiv = document.createElement('div')
-            spendlessAmountsDiv.classList.add("card")
-            spendlessAmountsDiv.classList.add("m-5")
-            spendlessAmountsDiv.classList.add("p-5")
-            let spendlessAmountsContent = document.createElement('div')
-            spendlessAmountsContent.classList.add("card-content")
-            let spendlessAmount = document.querySelector(".card-content")
-            spendlessAmountsDiv.innerHTML = `<h2 class="title is-4"> Amount: $${newSLData.attributes.amount}  Description:${newSLData.attributes.description}</h2>` 
-            spendlessAmount.appendChild(spendlessAmountsDiv)
-
-        }
-
-    // function renderSpendlessAmounts(spendless_amounts) {
-    //     const spendlessMarkup = `
-    //     <div data-id=${spendless_amounts.id}>
-    //     <h3>$<spendless_amounts.attributes.amount</h3>
-    //     <h3>$<spendless_amounts.attributes.description</h3>
-    //     <button data-id=${spendless_amounts.id}>edit</button>
-    //     </div>
-    //     <br><br>`
-    // }
-
-// function addSLtoTotal(spendless_amount) {
-    // add a new spendless_amount.value to the current total
-    // 
-
-    // }
