@@ -47,3 +47,39 @@ TODO:
     [] How to make it not repeat everytime you hit the button?
     [] method in Spendless Model (scope method?)
     [] in DOM, comparison is displayed from Total v. Goal
+
+
+
+ <!-- button creates cards for each spendless amount -->
+
+            <!-- <section class="sl-amounts section is-small ">
+                <h4 class="title">Want to see how you are spending less? </h4>
+                <button class="sl-button is-primary mb-5 p-2">Yes, please show me</button>   
+            </section> -->
+
+            <!-- <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-content">
+                    <p></p>
+                </div>
+            </div> -->
+
+    // used a button to show spendless_amounts
+    // VIEW Spendless amounts */
+
+// const viewSlBtn = document.querySelector(".sl-button")
+
+// viewSlBtn.addEventListener("click", function () {
+//     showSlAmounts()
+// })
+
+// function showSlAmounts() {
+//     fetch(spendlessAmountEndPoint)
+//     .then(res => res.json())
+//     .then(spendless_amounts => {
+//         spendless_amounts.data.forEach( sl_amount => {
+//         renderSpendlessAmounts(sl_amount)   
+//         })
+//     })
+// }
