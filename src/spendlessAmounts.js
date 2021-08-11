@@ -13,13 +13,16 @@ class SpendlessAmount {
     }
 
     // add each new spendless amount to the table of all events
-    showSpendlessAmount(slAmountData) {
-        console.log(spendless_amount)
-        const newRow = document.createElement('tr')
-        const dateData = document.createElement('td')
-        const amountData = document.createElement('td')
-        const descriptionData = document.createElement('td')
-        console.log(newRow)
+    showSpendlessAmount(sl_amount) {
+        // console.log(spendless_amount)
+        const table = document.querySelector(.sl-table)
+        const newRow = table.insertRow(0)
+        const newDate = newRow.insertCell(0)
+        const newAmount = newRow.insertCell(1)
+        const newDescription = newRow.insertCell(2)
+        newDate.innerText = this.created_at
+        newAmount.innerText = this.amount
+        newDescription.innerText = this.description
             }
     }
 
