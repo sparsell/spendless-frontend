@@ -83,3 +83,42 @@ TODO:
 //         })
 //     })
 // }
+
+// WIP: 
+// newSpendlessButton.addEventListener('submit', function(e) {
+//     e.preventDefault()
+//     createSL(e)
+//     })
+
+//  newSpendlessButton.addEventListener("click", (e) => {
+//     spendless_amount = spendless_amount.value
+//     spendless_detail = spendless_detail.value
+//     postSpendlessAmount(spendless_amount, spendless_detail)
+//     // addSLtoTotal(spendless_amount)
+//     clearInput()
+//     })
+
+//     function createSL(e) {
+//         e.preventDefault()
+//         spendless_amount = spendless_amount.value
+//         spendless_detail = spendless_detail.value
+//         postSpendlessAmount(spendless_amount, spendless_detail)
+//         // addSLtoTotal(spendless_amount)
+//         const clearInput = function () {
+//         spendless_amount.value = ""
+//         spendless_detail.value = ""
+//     }
+//     }
+
+//
+function renderSpendlessAmounts(newSLData) {
+            let spendlessAmountsDiv = document.createElement('div')
+            spendlessAmountsDiv.classList.add("card")
+            spendlessAmountsDiv.classList.add("m-5")
+            spendlessAmountsDiv.classList.add("p-5")
+            let spendlessAmountsContent = document.createElement('div')
+            spendlessAmountsContent.classList.add("card-content")
+            let spendlessAmount = document.querySelector(".card-content")
+            spendlessAmountsDiv.innerHTML = `<h2 class="title is-4"> Amount: $${newSLData.attributes.amount}  Description:${newSLData.attributes.description}</h2>` 
+            spendlessAmount.appendChild(spendlessAmountsDiv)
+        }
