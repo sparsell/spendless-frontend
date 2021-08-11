@@ -181,7 +181,11 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
                 // const sl_amountData = sl_amount.data
                 // debugger
                 let newSLData = new SpendlessAmount(sl_amount, sl_amount.attributes)
-                document.querySelector('.card-content').innerHTML += newSLData.renderSpendlessAmounts()
+                const newRow = document.createElement('tr')
+                const dateRow = document.createElement('td')
+                const amountRow = document.createElement('td')
+                const descriptionRow = document.createElement('td')
+                dateRow.newSLData.
         })
         .catch(err => alert(err))
     }
@@ -190,26 +194,6 @@ const clearInput = function () {
         spendless_amount.value = ""
         spendless_detail.value = ""
     }
-
-
-    // used a button to show spendless_amounts
-    // VIEW Spendless amounts */
-    
-// const viewSlBtn = document.querySelector(".sl-button")
-
-// viewSlBtn.addEventListener("click", function () {
-//     showSlAmounts()
-// })
-
-// function showSlAmounts() {
-//     fetch(spendlessAmountEndPoint)
-//     .then(res => res.json())
-//     .then(spendless_amounts => {
-//         spendless_amounts.data.forEach( sl_amount => {
-//         renderSpendlessAmounts(sl_amount)   
-//         })
-//     })
-// }
 
 function renderSpendlessAmounts(newSLData) {
             let spendlessAmountsDiv = document.createElement('div')
