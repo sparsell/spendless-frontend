@@ -82,7 +82,7 @@ function renderGoal(goal) {
     .then(resp => resp.json())
     .then(goals => {
      goals.data.forEach ( goal => {
-         debugger
+        //  debugger
        renderGoal(goal)
         })
     })
@@ -151,9 +151,10 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
         .then(resp => resp.json())
             .then(sl_amount => {
                 console.log(sl_amount)
-                debugger
+                // debugger
                 const sl_amountData = sl_amount.data
-                let newSLData = new SpendlessAmount(sl_amountData, sl_amountData.attributes)
+                debugger
+                let newSLData = new SpendlessAmount(sl_amountData)
     
                 })   
             .catch(err => alert(err)) 
