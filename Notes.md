@@ -1,4 +1,13 @@
 
+1. Serializer - look at Goal and Total create actions (change to Spendless version?)
+2. New Goal - fix HTMl to have <form> and change event handler to 'submit', not 'click'
+3. Spendless Amount event handler is creating a second set of variables for spendless_amount and spendless_detail --> don't need both? or is it working to help the clearInput function work? 
+4. line 155 = do you need to define 2x? 
+
+spendlessAmount.js
+1. add total_id to constructor?
+2. add created_at to constructor?
+
 
 GOAL:
     [] Work out association:
