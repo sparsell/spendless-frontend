@@ -114,11 +114,12 @@ function renderTotal(total) {
         slTotal.innerText = total.attributes.total
 }
 // ***STRETCH: Progress section***//
-
-
+function renderProgress() {
+    let progress = document.querySelector('.goal-v-total')
+    progress.innerText = '.sl-total'.value - ('.goal-display').value
+}
 
 // ***Spend less amount section***//
-
 const createSpendlessAmtForm = document.querySelector("#create-sl-form")
 let spendless_amount = document.querySelector("#spendless-amount-input")
 let spendless_detail = document.querySelector("#spendless-detail-input")
@@ -132,9 +133,8 @@ function createFormHandler(e) {
     const spendless_detail = document.querySelector("#spendless-detail-input").value
     postSpendlessAmount(spendless_amount, spendless_detail)
     clearInput(spendless_amount.value, spendless_detail.value)
+    // renderProgress()
 }
-
-
 
 function postSpendlessAmount(spendless_amount, spendless_detail) {
     fetch (spendlessAmountEndPoint, {
@@ -153,7 +153,7 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
                 console.log(sl_amount)
                 // debugger
                 const sl_amountData = sl_amount.data
-                debugger
+                // debugger
                 let newSLData = new SpendlessAmount(sl_amountData)
     
                 })   
