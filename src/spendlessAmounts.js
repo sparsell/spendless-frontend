@@ -24,13 +24,15 @@ class SpendlessAmount {
 
     // add each new spendless amount to the table of all events
     showSpendlessAmount() {
-        // console.log(spendless_amount)
-        let date = new Date(this.created_at)
+     
+        let date = new Date(this.created_at).toLocaleString().split(',')[0]
+
         const table = document.querySelector("#sl-table")
         const newRow = table.insertRow()
         const newDate = newRow.insertCell(0)
         const newAmount = newRow.insertCell(1)
         const newDescription = newRow.insertCell(2)
+
         newDate.innerHTML = `<td>${date}</td>`
         newAmount.innerHTML = `<td><span>$</span>${this.spendless_amount}</td>`
         newDescription.innerHTML = `<td>${this.spendless_description}</td>`
