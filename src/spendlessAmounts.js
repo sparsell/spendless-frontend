@@ -1,8 +1,6 @@
 class SpendlessAmount {
 
     constructor(sl_amountData) {
-        // debugger
-        // console.log(sl_amountData)
         this.id = sl_amountData.id
         this.created_at = sl_amountData.attributes.created_at
         this.spendless_amount = sl_amountData.attributes.amount
