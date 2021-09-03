@@ -19,7 +19,7 @@ const newGoalBtn = document.querySelector(".goal-button")
 
 
 //*** start program */
-document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal())
+document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal(), showSLAmounts())
 
 modalBtn.addEventListener('click', function() {
     modal.style.display = 'block';
@@ -151,13 +151,39 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
         .then(resp => resp.json())
             .then(sl_amount => {
                 console.log(sl_amount)
-                // debugger
+                
                 const sl_amountData = sl_amount.data
-                // debugger
                 let newSLData = new SpendlessAmount(sl_amountData)
     
                 })   
             .catch(err => alert(err)) 
+    }
+
+    function showSLAmounts() {
+        fetch(spendlessAmountEndPoint)
+        .then(res => res.json())
+        .then(spendless_amounts => {
+            spendless_amounts.data.forEach(amount => {
+                renderAmount(amount)
+            })
+        })
+        .catch(error => {
+            return error;
+        })
+    }
+
+    function renderAmount(amount) {
+        let date = new Date(amount.attributes.created_at).toLocaleString().split(',')[0]
+
+        const table = document.querySelector("#sl-table")
+        const newRow = table.insertRow()
+        const newDate = newRow.insertCell(0)
+        const newAmount = newRow.insertCell(1)
+        const newDescription = newRow.insertCell(2)
+
+        newDate.innerHTML = `<td>${date}</td>`
+        newAmount.innerHTML = `<td><span>$</span>${amount.attributes.amount}</td>`
+        newDescription.innerHTML = `<td>${amount.attributes.description}</td>`
     }
 
 const clearInput = function () {
