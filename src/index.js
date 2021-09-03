@@ -114,10 +114,10 @@ function renderTotal(total) {
         slTotal.innerText = total.attributes.total
 }
 // ***STRETCH: Progress section***//
-function renderProgress() {
-    let progress = document.querySelector('.goal-v-total')
-    progress.innerText = '.sl-total'.value - ('.goal-display').value
-}
+// function renderProgress() {
+//     let progress = document.querySelector('.goal-v-total')
+//     progress.innerText = '.sl-total'.value - ('.goal-display').value
+// }
 
 // ***Spend less amount section***//
 const createSpendlessAmtForm = document.querySelector("#create-sl-form")
@@ -151,7 +151,7 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
         .then(resp => resp.json())
             .then(sl_amount => {
                 console.log(sl_amount)
-                
+
                 const sl_amountData = sl_amount.data
                 let newSLData = new SpendlessAmount(sl_amountData)
     
