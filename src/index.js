@@ -2,6 +2,7 @@
 const goalEndPoint = "http://localhost:3000/api/v1/goals"
 const goalEditEndPoint = "http://localhost:3000/api/v1/goals/1"
 const totalEndPoint = "http://localhost:3000/api/v1/totals"
+const totalEditEndPoint = "http://localhost:3000/api/v1/totals/1"
 const spendlessAmountEndPoint = "http://localhost:3000/api/v1/spendless_amounts"
 
 // *** modal */
@@ -132,8 +133,9 @@ function createFormHandler(e) {
     const spendless_amount = document.querySelector("#spendless-amount-input").value
     const spendless_detail = document.querySelector("#spendless-detail-input").value
     postSpendlessAmount(spendless_amount, spendless_detail)
+    updateTotal(spendless_amount)
     clearInput(spendless_amount.value, spendless_detail.value)
-    // renderProgress()
+
 }
 
 function postSpendlessAmount(spendless_amount, spendless_detail) {
@@ -150,8 +152,7 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
     })
         .then(resp => resp.json())
             .then(sl_amount => {
-                console.log(sl_amount)
-
+                // console.log(sl_amount)
                 const sl_amountData = sl_amount.data
                 let newSLData = new SpendlessAmount(sl_amountData)
     
@@ -159,6 +160,38 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
             .catch(err => alert(err)) 
     }
 
+    function updateTotal(newTotal) {
+        debugger
+        fetch(totalEditEndPoint, {
+        method: 'PATCH', 
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }, 
+        body: JSON.stringify({
+            total: newTotal
+        })
+    })
+    .then(resp => resp.json())
+    .then(totals => {
+     totals.data.forEach ( total => {
+        //  debugger
+       renderTotal(total)
+        })
+    })
+    .catch(error => {
+            return error;
+    })
+
+    }
+
+
+    const clearInput = function () {
+    spendless_amount.value = ""
+    spendless_detail.value = ""
+    }
+
+    // at DOM content loaded
     function showSLAmounts() {
         fetch(spendlessAmountEndPoint)
         .then(res => res.json())
@@ -186,7 +219,3 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
         newDescription.innerHTML = `<td>${amount.attributes.description}</td>`
     }
 
-const clearInput = function () {
-    spendless_amount.value = ""
-    spendless_detail.value = ""
-    }
