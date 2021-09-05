@@ -1,5 +1,3 @@
-
-1. Serializer - look at Total create action (e.g, look at SpendlessAmountSerializer version)
 2. New Goal - fix HTMl to have <form> and change event handler to 'submit', not 'click'
 3. Spendless Amount event handler is creating a second set of variables for spendless_amount and spendless_detail --> don't need both? or is it working to help the clearInput function work? 
 4. line 155 = do you need to define 2x? 
