@@ -44,11 +44,13 @@
             <section class="goal-section is-small box m-5 p-5">
                 <div class="goal-toggle subtitle m-5 fa-file-text">
                     <h3 class="goal-title title m-5">Spend < Less GOAL</h3>
-                    <div class="goal-input">
-                        <p class="goal-input-msg"></p>
-                        <input id="goal-input" class="input is-primary m-5" name="goal_amount" type="number" style="width: 45%" placeholder="Enter a number, e.g., 250">
-                        <button type="submit" name="submit" class="goal-button button is-primary m-5">Submit</button>
-                    </div>
+                    <form>
+                        <div class="goal-input">
+                            <p class="goal-input-msg"></p>
+                            <input id="goal-input" class="input is-primary m-5" name="goal_amount" type="number" style="width: 45%" placeholder="Enter a number, e.g., 250">
+                            <input type="submit" name="submit" class="goal-button button is-primary m-5"></input>
+                        </div>
+                    </form>
 
                     <div class="goal-display">
                     </div>
@@ -65,16 +67,15 @@
                 <div>
                     <h3 class="title">Spend < Less TOTAL</h3>
                     <h2 ><span>$</span> <span id="sl-total"></span></h2>
-                    
                 </div>
             </section>
 
             <section class="progress-section is-small box m-5 p-5">
                 <div>
-                    <!-- <progress class="progress is-primary" value="15" max="50">30%</progress> -->
-                    <h2 class="subtitle">Spend <span>$</span> <span class="goal-v-total"></span> less to reach your goal!</h2>
-                </div>
-            </section>
+                    <progress class="progress is-primary" value="15" max="50">30%</progress> 
+                    <h2 class="subtitle">Spend <span>$</span> <span class="goal-v-total"></span> less to reach your goal!</h2> 
+                </div> 
+            </section> 
 
             <!-- Third section: create new spendless amount -->
             <section class="sl-amount is-small box is-primary m-5 p-5">
