@@ -13,7 +13,7 @@ const totalBtn = document.getElementById("button-total");
 
 // *** goal */
 const goalInput = document.querySelector(".goal-input")
-const newGoalBtn = document.querySelector(".goal-button")
+
 // let goal_amount = document.querySelector("#goal-input").value
 
 //*** spendless amount */
@@ -41,6 +41,7 @@ function getGoal() {
     .then(res => res.json())
     .then(goals => {
      goals.data.forEach ( goal => {
+        //  console.log(goal)
        renderGoal(goal)
         })
     })
@@ -50,7 +51,7 @@ function getGoal() {
 }
 
 function renderGoal(goal) {
-    if (goal !== 0) {
+    if (goal.attributes.goal_amount !== 0) {
     let goalDiv = document.createElement('div')
     let goalTotal = document.querySelector('.goal-display')
     goalDiv.innerText = "$" + goal.attributes.goal_amount
@@ -64,10 +65,13 @@ function renderGoal(goal) {
     }
 }
 
-    newGoalBtn.addEventListener('click', () => {
+    const newGoalBtn = document.querySelector(".goal-button")
+    newGoalBtn.addEventListener('submit', (e) => createGoalHandler(e)) 
+
+    function createGoalHandler(e) {
         const goal_amount = document.querySelector("#goal-input").value
         postGoal(goal_amount)
-    })
+    }
 
     function postGoal(goal_amount) {
     fetch(goalEditEndPoint, {
@@ -83,7 +87,6 @@ function renderGoal(goal) {
     .then(resp => resp.json())
     .then(goals => {
      goals.data.forEach ( goal => {
-        //  debugger
        renderGoal(goal)
         })
     })
@@ -95,14 +98,17 @@ function renderGoal(goal) {
 
 
 // ***Total section***//
-// no input; Total is set to "0" when db is created via seeds.rb
+// no input by user:
+//      1. Total is set to "0" when db is created via seeds.rb
+//      2. Total is increased by each Spendless Amount when "submit" is clicked
 
 function getTotal() {
     fetch(totalEndPoint)
-    .then(res => res.json())
+    .then(resp => resp.json())
     .then(totals => {
         totals.data.forEach( total => {
-            renderTotal(total) 
+            // debugger
+        renderTotal(total) 
         })
     })
     .catch(error => {
@@ -111,7 +117,8 @@ function getTotal() {
 } 
 
 function renderTotal(total) {
-        let slTotal = document.querySelector('.sl-total')
+        let slTotal = document.querySelector('#sl-total')
+
         slTotal.innerText = total.attributes.total
 }
 // ***STRETCH: Progress section***//
@@ -135,7 +142,6 @@ function createFormHandler(e) {
     postSpendlessAmount(spendless_amount, spendless_detail)
     updateTotal(spendless_amount)
     clearInput(spendless_amount.value, spendless_detail.value)
-
 }
 
 function postSpendlessAmount(spendless_amount, spendless_detail) {
@@ -155,13 +161,14 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
                 // console.log(sl_amount)
                 const sl_amountData = sl_amount.data
                 let newSLData = new SpendlessAmount(sl_amountData)
+                // updateTotal(spendless_amount)
     
                 })   
             .catch(err => alert(err)) 
     }
 
-    function updateTotal(newTotal) {
-        debugger
+    function updateTotal(spendless_amount) {
+        // debugger
         fetch(totalEditEndPoint, {
         method: 'PATCH', 
         headers: {
@@ -169,7 +176,7 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
             "Accept": "application/json"
         }, 
         body: JSON.stringify({
-            total: newTotal
+            total: spendless_amount
         })
     })
     .then(resp => resp.json())
