@@ -1,12 +1,12 @@
 
- Spendless runs on Ruby on Rails (as an API) and JavaScript. It uses a Postgres Database. 
+ Spendless runs on Ruby on Rails (as an API) and JavaScript. It uses a Postgres Database. Styled by Bulma.
 
  Once you clone the git respository (see both back and frontend repos), you need to create the database and run the migrations. 
 
 
 ***     ***     ***     ***     ***     ***     ***     ***     ***     ***
 
-Spendless is a tool to help you be more mindful of how you spend your money. We make a lot of purchases on automatic. Spendless will keep track the amounts of money you save on purchases that you paused to consider. 
+Spendless is a tool to help you be more mindful of how you spend your money. We make a lot of purchases on automatic. Spendless will keep track the amounts of money you saved on purchases that you paused to consider. 
 
 You can log things like:
 
