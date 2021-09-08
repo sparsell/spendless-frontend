@@ -117,10 +117,11 @@ function getTotal() {
 } 
 
 function renderTotal(total) {
-        let slTotal = document.querySelector('#sl-total')
-
+        let slTotal = document.querySelector('.sl-total')
+        // debugger
         slTotal.innerText = total.attributes.total
 }
+
 // ***STRETCH: Progress section***//
 // function renderProgress() {
 //     let progress = document.querySelector('.goal-v-total')
@@ -161,13 +162,11 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
                 // console.log(sl_amount)
                 const sl_amountData = sl_amount.data
                 let newSLData = new SpendlessAmount(sl_amountData)
-                // updateTotal(spendless_amount)
-    
                 })   
             .catch(err => alert(err)) 
     }
 
-    function updateTotal(spendless_amount) {
+    function updateTotal(newTotal) {
         // debugger
         fetch(totalEditEndPoint, {
         method: 'PATCH', 
@@ -176,7 +175,7 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
             "Accept": "application/json"
         }, 
         body: JSON.stringify({
-            total: spendless_amount
+            total: newTotal
         })
     })
     .then(resp => resp.json())
