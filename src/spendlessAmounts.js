@@ -7,7 +7,6 @@ class SpendlessAmount {
         this.spendless_description = sl_amountData.attributes.description
         SpendlessAmount.all.push(this)
         this.adjustTotal()
-        // this.updateGoalvsTotal()
         this.showSpendlessAmount()
       
     }
@@ -20,15 +19,7 @@ class SpendlessAmount {
         newTotal += e.spendless_amount
         })
         currentTotal.innerHTML = `<span>${newTotal}</span>`
-        // updateTotal(newTotal)
-    }
-
-    // updateGoalvsTotal() {
-    //     let totalDiff = document.querySelector("#goal-v-total")
-    //     let goalAmt = document.querySelector('.goal-display')
-
-    //     totalDiff.innerHTML = `<p>${this.spendless_amount}</p>`
-    // }
+        }
 
     // add each new spendless amount to the table of all events
     showSpendlessAmount() {
