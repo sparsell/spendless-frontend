@@ -36,3 +36,23 @@ TODO:
     DOM:
     [] method in SpendlessAmount.js to add new sl_amount to Total
     [] method to compare and display Total v. Goal
+
+
+
+
+        // checkTotalVsGoal(newTotal) {
+        //     if (newTotal >= goal_amount) {
+        //         console.log("you did it!")
+        //     }
+        // }
+
+    // updateGoalvsTotal() {
+    //     let totalDiff = document.querySelector("#goal-v-total")
+    //     let goalAmt = document.querySelector('.goal-display')
+
+    //     totalDiff.innerHTML = `<p>${this.spendless_amount}</p>`
+    //      if statement:
+                // if totalDiff === 0 {
+                //  alert("You reached your goal!")
+                // } 
+    // }
