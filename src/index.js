@@ -12,7 +12,7 @@ const closeBtn = document.getElementById("delete");
 const totalBtn = document.getElementById("button-total"); 
 
 //*** start program */
-document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal(), showSLAmounts())
+document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal(), getSLAmounts())
 
 modalBtn.addEventListener('click', function() {
     modal.style.display = 'block';
@@ -81,11 +81,10 @@ const goalInput = document.querySelector(".goal-input")
         })
     })
     .then(resp => resp.json())
-    .then(goal => {
-    //  goals.data.forEach ( goal => {
-        debugger
+    .then(goals => {
+     goals.data.forEach ( goal => {
        renderGoal(goal)
-        // })
+        })
     })
     .catch(error => {
             return error;
@@ -101,7 +100,6 @@ function getTotal() {
     .then(resp => resp.json())
     .then(totals => {
         totals.data.forEach( total => {
-            // debugger
         renderTotal(total) 
         })
     })
@@ -180,7 +178,7 @@ function updateTotal() {
     }
 
     // at DOM content loaded
-    function showSLAmounts() {
+    function getSLAmounts() {
         fetch(spendlessAmountEndPoint)
         .then(res => res.json())
         .then(spendless_amounts => {
