@@ -49,7 +49,8 @@ TODO:
 
 <!--STRETCH GOAL - login  -->
 <!--STRETCH GOAL - create image for goal  -->
-<!--STRETCH GOAL - allow user to create multiple goals w. associated totals; they can choose which goal to enter a spendless amount for  -->
+<!--STRETCH GOAL - allow user to create multiple goals w. associated totals; 
+// STRETCH: add button when goal is met to reset to '0'they can choose which goal to enter a spendless amount for  -->
 <!-- STRETCH - show progress bar (goal - total) linked to completion-->
 <!-- STRETCH - show random encouraging messages below progress bar -->
 
