@@ -46,6 +46,16 @@ TODO:
         //     }
         // }
 
+Stretch: 
+Add a progress bar and alert user when they are close to their goal
+
+<section class="progress-section is-small box m-5 p-5">
+                <div>
+                    <progress class="progress is-primary" value="15" max="50">30%</progress> 
+                    <h2 class="subtitle">Spend <span>$</span> <span class="goal-v-total"></span> less to reach your goal!</h2> 
+                </div> 
+            </section> 
+
     // updateGoalvsTotal() {
     //     let totalDiff = document.querySelector("#goal-v-total")
     //     let goalAmt = document.querySelector('.goal-display')
