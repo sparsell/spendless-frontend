@@ -46,8 +46,12 @@ TODO:
         //     }
         // }
 
-Stretch: 
-Add a progress bar and alert user when they are close to their goal
+
+<!--STRETCH GOAL - login  -->
+<!--STRETCH GOAL - create image for goal  -->
+<!--STRETCH GOAL - allow user to create multiple goals w. associated totals; they can choose which goal to enter a spendless amount for  -->
+<!-- STRETCH - show progress bar (goal - total) linked to completion-->
+<!-- STRETCH - show random encouraging messages below progress bar -->
 
 <section class="progress-section is-small box m-5 p-5">
                 <div>
