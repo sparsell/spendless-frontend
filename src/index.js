@@ -11,14 +11,6 @@ const modalBtn = document.getElementById("modal-btn");
 const closeBtn = document.getElementById("delete");
 const totalBtn = document.getElementById("button-total"); 
 
-// *** goal */
-const goalInput = document.querySelector(".goal-input")
-
-// let goal_amount = document.querySelector("#goal-input").value
-
-//*** spendless amount */
-
-
 //*** start program */
 document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal(), showSLAmounts())
 
@@ -34,17 +26,15 @@ closeBtn.addEventListener('click', function() {
 
     // get goal; db is seeded with goal = 0
     // At start of program, if goal is 0, user has to enter a value; no other option to change after this
-    // STRETCH: add button when goal is met to reset to '0'
 
 function getGoal() {
     fetch(goalEndPoint)
-    .then(res => res.json())
-    .then(goals => {
-     goals.data.forEach ( goal => {
-        //  console.log(goal)
-       renderGoal(goal)
+        .then(res => res.json())
+        .then(goals => {
+            goals.data.forEach ( goal => {
+            renderGoal(goal)
+            }) 
         })
-    })
     .catch(error => {
             return error;
     })
@@ -53,6 +43,7 @@ function getGoal() {
 function renderGoal(goal) {
     if (goal.attributes.goal_amount !== 0) {
     let goalDiv = document.createElement('div')
+    goalDiv.classList.add("set-goal")
     let goalTotal = document.querySelector('.goal-display')
     goalDiv.innerText = "$" + goal.attributes.goal_amount
     goalTotal.appendChild(goalDiv)
@@ -65,11 +56,15 @@ function renderGoal(goal) {
     }
 }
 
-    const newGoalBtn = document.querySelector(".goal-button")
-    newGoalBtn.addEventListener('submit', (e) => createGoalHandler(e)) 
+//    Add your goal at the start of the program
+const newGoal = document.querySelector("#create-goal") //<form> element
+const goalInput = document.querySelector(".goal-input")
+ const newGoalBtn = document.querySelector("#new-goal-button")
+// const goal_amount = document.querySelector("#goal-input").value
+    newGoal.addEventListener('submit', (e) => createGoalHandler(e)) 
 
     function createGoalHandler(e) {
-        e.preventDefault
+        e.preventDefault()
         const goal_amount = document.querySelector("#goal-input").value
         postGoal(goal_amount)
     }
@@ -86,10 +81,11 @@ function renderGoal(goal) {
         })
     })
     .then(resp => resp.json())
-    .then(goals => {
-     goals.data.forEach ( goal => {
+    .then(goal => {
+    //  goals.data.forEach ( goal => {
+        debugger
        renderGoal(goal)
-        })
+        // })
     })
     .catch(error => {
             return error;
@@ -99,9 +95,6 @@ function renderGoal(goal) {
 
 
 // ***Total section***//
-// no input by user:
-//      1. Total is set to "0" when db is created via seeds.rb
-//      2. Total is increased by each Spendless Amount when "submit" is clicked
 
 function getTotal() {
     fetch(totalEndPoint)
@@ -121,12 +114,6 @@ function renderTotal(total) {
         let slTotal = document.querySelector('.sl-total')
         slTotal.innerText = total.attributes.total
 }
-
-// ***STRETCH: Progress section***//
-// function renderProgress() {
-//     let progress = document.querySelector('.goal-v-total')
-//     progress.innerText = '.sl-total'.value - ('.goal-display').value
-// }
 
 // ***Spend less amount section***//
 const createSpendlessAmtForm = document.querySelector("#create-sl-form")
@@ -166,32 +153,26 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
             .catch(err => alert(err)) 
     }
 
-    function updateTotal() {
-        // debugger
-        fetch(totalEditEndPoint, {
-        method: 'PATCH', 
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
+function updateTotal() {
+    fetch(totalEditEndPoint, {
+    method: 'PATCH', 
+    headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
         }, 
         body: JSON.stringify({
-            // total: total 
+
         })
     })
-    .then(resp => resp.json())
-    .then(total => {
+         .then(resp => resp.json())
+        .then(total => {
         const new_total = total.data //.attributes.total
-        debugger
-
         renderTotal(new_total)
-    
-    })
+        })
     .catch(error => {
-            return error;
+    return error;
     })
-
-    }
-
+}
 
     const clearInput = function () {
     spendless_amount.value = ""
@@ -209,8 +190,6 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
                 newTotal = function(e) {
                     newTotal += e.amount 
                 }
-                // updateTotal(newTotal)
-              
             })
         })
         .catch(error => {
@@ -231,4 +210,3 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
         newAmount.innerHTML = `<td><span>$</span>${amount.attributes.amount}</td>`
         newDescription.innerHTML = `<td>${amount.attributes.description}</td>`
     }
-

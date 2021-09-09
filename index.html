@@ -43,13 +43,14 @@
             <section class="goal-section is-small box m-3 p-3">
                 <div class="goal-toggle subtitle m-5 fa-file-text">
                     <h3 class="goal-title title m-5">Spend < Less GOAL</h3>
-                    <form>
                         <div class="goal-input">
-                            <p class="goal-input-msg"></p>
-                            <input id="goal-input" class="input is-primary m-5" name="goal_amount" type="number" style="width: 45%" placeholder="Enter a number, e.g., 250">
-                            <input type="submit" name="submit" class="goal-button button is-primary m-5"></input>
+                            <form id="create-goal">
+                                <p class="goal-input-msg"></p>
+                                <input type="number" id="goal-input" class="input is-primary m-5" name="goal_amount" style="width: 45%" placeholder="Enter a number, e.g., 250">
+                                <input type="submit" id="new-goal-button" class="submit button is-primary m-2 p-2"></input>
+                            </form>
                         </div>
-                    </form>
+                   
 
                     <div class="goal-display">
                     </div>
