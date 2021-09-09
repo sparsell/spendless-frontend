@@ -69,6 +69,7 @@ function renderGoal(goal) {
     newGoalBtn.addEventListener('submit', (e) => createGoalHandler(e)) 
 
     function createGoalHandler(e) {
+        e.preventDefault
         const goal_amount = document.querySelector("#goal-input").value
         postGoal(goal_amount)
     }
@@ -118,7 +119,6 @@ function getTotal() {
 
 function renderTotal(total) {
         let slTotal = document.querySelector('.sl-total')
-        // debugger
         slTotal.innerText = total.attributes.total
 }
 
@@ -141,7 +141,6 @@ function createFormHandler(e) {
     const spendless_amount = document.querySelector("#spendless-amount-input").value
     const spendless_detail = document.querySelector("#spendless-detail-input").value
     postSpendlessAmount(spendless_amount, spendless_detail)
-    updateTotal(spendless_amount)
     clearInput(spendless_amount.value, spendless_detail.value)
 }
 
@@ -162,11 +161,12 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
                 // console.log(sl_amount)
                 const sl_amountData = sl_amount.data
                 let newSLData = new SpendlessAmount(sl_amountData)
+                updateTotal()
                 })   
             .catch(err => alert(err)) 
     }
 
-    function updateTotal(newTotal) {
+    function updateTotal() {
         // debugger
         fetch(totalEditEndPoint, {
         method: 'PATCH', 
@@ -175,15 +175,16 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
             "Accept": "application/json"
         }, 
         body: JSON.stringify({
-            total: newTotal
+            // total: total 
         })
     })
     .then(resp => resp.json())
-    .then(totals => {
-     totals.data.forEach ( total => {
-        //  debugger
-       renderTotal(total)
-        })
+    .then(total => {
+        const new_total = total.data //.attributes.total
+        debugger
+
+        renderTotal(new_total)
+    
     })
     .catch(error => {
             return error;
@@ -204,6 +205,12 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
         .then(spendless_amounts => {
             spendless_amounts.data.forEach(amount => {
                 renderAmount(amount)
+                let newTotal = 0
+                newTotal = function(e) {
+                    newTotal += e.amount 
+                }
+                // updateTotal(newTotal)
+              
             })
         })
         .catch(error => {
