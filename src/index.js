@@ -11,8 +11,11 @@ const modalBtn = document.getElementById("modal-btn");
 const closeBtn = document.getElementById("delete");
 const totalBtn = document.getElementById("button-total"); 
 
+
+
 //*** start program */
 document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal(), getSLAmounts())
+// document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal())
 
 modalBtn.addEventListener('click', function() {
     modal.style.display = 'block';
@@ -22,17 +25,25 @@ closeBtn.addEventListener('click', function() {
     modal.style.display = 'none';
 });
 
+
+
 // ***Goal section***//
 
     // get goal; db is seeded with goal = 0
     // At start of program, if goal is 0, user has to enter a value; no other option to change after this
 
+let showGoal;
 function getGoal() {
     fetch(goalEndPoint)
         .then(res => res.json())
         .then(goals => {
             goals.data.forEach ( goal => {
+                showGoal = goal.attributes.goal_amount
+                console.log(showGoal)
+                console.log(goal)
             renderGoal(goal)
+            calcDiff(showGoal)
+            
             }) 
         })
     .catch(error => {
@@ -40,11 +51,15 @@ function getGoal() {
     })
 }
 
-const showGoal = 0;
+function calcDiff(showGoal) {
+    console.log(showGoal)
+}
+
+
 
 function renderGoal(goal) {
     if (goal.attributes.goal_amount !== 0) {
-    let goalDiv = document.createElement('div')
+    let goalDiv = document.createElement('h2')
     goalDiv.classList.add("set-goal")
     let goalTotal = document.querySelector('.goal-display')
     goalDiv.innerText = "$" + goal.attributes.goal_amount
@@ -63,7 +78,8 @@ function renderGoal(goal) {
 const newGoal = document.querySelector("#create-goal") //<form> element
 const goalInput = document.querySelector(".goal-input")
  const newGoalBtn = document.querySelector("#new-goal-button")
-// const goal_amount = document.querySelector("#goal-input").value
+const goal_amount = document.querySelector("#goal-input").value
+
     newGoal.addEventListener('submit', (e) => createGoalHandler(e)) 
 
     function createGoalHandler(e) {
@@ -94,8 +110,6 @@ const goalInput = document.querySelector(".goal-input")
     })
 }
 
-
-
 // ***Total section***//
 
 function getTotal() {
@@ -121,6 +135,7 @@ const createSpendlessAmtForm = document.querySelector("#create-sl-form")
 let spendless_amount = document.querySelector("#spendless-amount-input")
 let spendless_detail = document.querySelector("#spendless-detail-input")
 const newSpendlessButton = document.querySelector("#new-sl-button")
+
 
 createSpendlessAmtForm.addEventListener('submit', (e) => createFormHandler(e))
 
@@ -154,7 +169,6 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
             .catch(err => alert(err)) 
     }
 
-let new_total;
 function updateTotal() {
     fetch(totalEditEndPoint, {
     method: 'PATCH', 
@@ -168,7 +182,8 @@ function updateTotal() {
     })
          .then(resp => resp.json())
         .then(total => {
-        new_total = total.data //.attributes.total
+        const new_total = total.data //.attributes.total
+        console.log(new_total.attributes.total)
         renderTotal(new_total)
         })
     .catch(error => {
@@ -176,17 +191,20 @@ function updateTotal() {
     })
 }
 
-const celebrateGoal = () => {
-    if (new_total >= showGoal) {
-        console.log(showGoal)
-    }
-}
-
     const clearInput = function () {
     spendless_amount.value = ""
     spendless_detail.value = ""
     }
 
+// show how you spent less - amounts
+    // let showSlAmounts = document.getElementById("show-sl-amounts");
+    // showSlAmounts.addEventListener('click', (e) => showSlAmountsHandler(e))
+
+    // function showSlAmountsHandler(e) {
+    //     e.preventDefault();
+    //     getSLAmounts();
+    // }
+ 
     // at DOM content loaded
     function getSLAmounts() {
         fetch(spendlessAmountEndPoint)
