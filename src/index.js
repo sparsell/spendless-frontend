@@ -40,6 +40,8 @@ function getGoal() {
     })
 }
 
+const showGoal = 0;
+
 function renderGoal(goal) {
     if (goal.attributes.goal_amount !== 0) {
     let goalDiv = document.createElement('div')
@@ -48,6 +50,7 @@ function renderGoal(goal) {
     goalDiv.innerText = "$" + goal.attributes.goal_amount
     goalTotal.appendChild(goalDiv)
     goalInput.style.display = "none"
+    showGoal = goal.attributes.goal_amount;
     } else {
         let setGoal = document.createElement('p')
         let setGoalMsg = document.querySelector('.goal-input-msg')
@@ -151,6 +154,7 @@ function postSpendlessAmount(spendless_amount, spendless_detail) {
             .catch(err => alert(err)) 
     }
 
+let new_total;
 function updateTotal() {
     fetch(totalEditEndPoint, {
     method: 'PATCH', 
@@ -164,12 +168,18 @@ function updateTotal() {
     })
          .then(resp => resp.json())
         .then(total => {
-        const new_total = total.data //.attributes.total
+        new_total = total.data //.attributes.total
         renderTotal(new_total)
         })
     .catch(error => {
     return error;
     })
+}
+
+const celebrateGoal = () => {
+    if (new_total >= showGoal) {
+        console.log(showGoal)
+    }
 }
 
     const clearInput = function () {
