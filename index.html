@@ -11,21 +11,25 @@
         <!-- <link rel="stylesheet" href="main.css"> -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
     </head>
-    <body class="has-background-grey-lighter">
-        <container class="wrapper has-text-centered m-5">
+    <body>
+        <container class="container wrapper has-text-centered">
             
             <!-- logo -->
-            <div class="hero m-5 mt-5">
-                <h1 class="title has-text-primary is-size-2">SPEND < LESS</h1>
+        <section class="section p-5 m-1">
+            <div class="container has-background-primary">
+                <div>
+                    <h1 class="has-text-white is-size-1">SPEND < LESS</h1>
+                </div>
             </div>
+        </section>
             
             <!-- modal -->
             <div class='is-center'>
-                <button class="button is-primary is-center display-block" id="modal-btn"> How does it work?</button>
+                <button class="button is-black is-center display-block" id="modal-btn"> How does it work?</button>
             </div>
             
             <div id="sl-modal" class='modal'>
-                <div class="modal-content box">
+                <div class="modal-content box box">
                     <p><strong>They say what you focus on, you create more of.</strong></p>
                     <br>
                     <p>Spendless is not a budget app; it subtly motivates you to make better spending choices, by showing you how little decisions througout the day can really add up to not a little amount of money you never knew you had.
@@ -34,46 +38,46 @@
                     <p>So set a goal and start logging all those moments when you consciously made the decision to spend less: bought a cheaper brand, only shopped the sales, bought second hand, took mass transit instead of Uber,etc. 
                     </p>
                     <button id="delete" class="delete"></button>
-                </div>"
+                </div>
             </div>
-
-
-            <!--First section: create / display goal  -->
-
-            <section class="goal-section is-small box m-3 p-3">
-                <div class="goal-toggle subtitle m-5 fa-file-text">
-                    <h3 class="goal-title title m-5">Spend < Less GOAL</h3>
-                        <div class="goal-input">
-                            <form id="create-goal">
-                                <p class="goal-input-msg"></p>
-                                <input type="number" id="goal-input" class="input is-primary m-5" name="goal_amount" style="width: 45%" placeholder="Enter a number, e.g., 250">
-                                <input type="submit" id="new-goal-button" class="submit button is-primary m-2 p-2"></input>
-                            </form>
+            
+            <section class="section">
+                <div class="container">
+                    <div class="columns box">
+                        <!--First section: create / display goal  -->
+                        <div class="column is-one-half">
+                             <!-- asks for goal if first time using app -->
+                            <div class="goal-toggle">
+                                <h3 class="goal-title title has-text-weight-light is-primary">MY GOAL:</h3>
+                                <div class="goal-input">
+                                    <form id="create-goal">
+                                        <p class="goal-input-msg"></p>
+                                         <input type="number" id="goal-input" class="input is-primary" name="goal_amount" style="width: 45%" placeholder="Enter a number, e.g., 250"/>
+                                        <input type="submit" id="new-goal-button" class="submit button is-primary"></input>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- else, displays goal from DB -->
+                            <div class="goal-display">
+                            </div>
                         </div>
-                   
-
-                    <div class="goal-display">
+                        <!--Second section: display total  -->
+                        <div class="column is-one-half">
+                            <h3 class="title has-text-weight-light">HOW MUCH LESS I'VE SPENT:</h3>
+                                <h2><span>$</span> <span class="sl-total"></span></h2>
+                        </div>
+                        
+                        </div>
                     </div>
-                    
-                </div>
             </section>
 
-
-            <!--Second section: display total  -->
-
-            <section class="total-section is-small box m-5 p-5">
-                <div>
-                    <h3 class="title">Spend < Less TOTAL</h3>
-                    <h2 ><span>$</span> <span class="sl-total"></span></h2>
-                </div>
-            </section>
-
+        
             <!-- Third section: create new spendless amount -->
-            <section class="sl-amount is-small box is-primary m-5 p-5">
-                <h2 class="title">I Spent < Less</h2>
+            <section class="section sl-amount is-small box background-is-primary m-3 p-3">
+                <h2 class="title has-text-weight-light">NEW ENTRY:</h2>
                 <form id="create-sl-form">
                     <h3>I spent 
-                        <input id="spendless-amount-input" class="input is-primary mb-2"  type="number" style="width: 35%" placeholder="Enter a number, e.g., 12.50"> less by 
+                        <input id="spendless-amount-input" class="input is-primary mb-2"  type="number" style="width: 35%" placeholder="Enter a number, e.g., 12"> less by 
 
                         <input id="spendless-detail-input" class="input is-primary"  type="textarea" style="width: 65%" placeholder="e.g., by not ordering a dessert"> .
                     </h3>
@@ -83,6 +87,14 @@
             </section>
 
             <!-- spendless amounts in detail -->
+            <section class="section">
+                <div class="container">
+                    <div class="box">
+                        <h3 class="title has-text-weight-light has-text-primary">Almost there!</h3>
+                        <progress class="has-background-secondary progress" value="15" max="100">15%</progress>
+                    </div>
+                </div>
+            </section>
 
             <section class="section">
                 <div class="columns is-centered">
