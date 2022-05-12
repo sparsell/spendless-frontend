@@ -1,8 +1,7 @@
 body {
-    background-color: rgb(89, 194, 138);
-
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 16px;
+    font-weight: 200;
     margin: 1em;
 }
 
@@ -16,7 +15,7 @@ body {
 }
 
 #logo {
-    font-size: 2em;
+    font-size: 4em;
 }
 
 #modal-btn {
@@ -75,10 +74,6 @@ body {
     pointer-events: auto;
 }
 
-/* .goals-container {
-    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-} */
-
 h2 {
-    font-size: 4em;
+    font-size: 2em;
 }
