@@ -48,7 +48,7 @@
                         <div class="column is-one-half">
                              <!-- asks for goal if first time using app -->
                             <div class="goal-toggle">
-                                <h3 class="goal-title title has-text-weight-light is-primary">MY GOAL:</h3>
+                                <h3 class="goal-title title has-text-weight-light has-text-primary">MY GOAL:</h3>
                                 <div class="goal-input">
                                     <form id="create-goal">
                                         <p class="goal-input-msg"></p>
@@ -63,7 +63,7 @@
                         </div>
                         <!--Second section: display total  -->
                         <div class="column is-one-half">
-                            <h3 class="title has-text-weight-light">HOW MUCH LESS I'VE SPENT:</h3>
+                            <h3 class="title has-text-weight-light has-text-primary">HOW MUCH LESS I'VE SPENT SO FAR:</h3>
                                 <h2><span>$</span> <span class="sl-total"></span></h2>
                         </div>
                         
@@ -74,15 +74,15 @@
         
             <!-- Third section: create new spendless amount -->
             <section class="section sl-amount is-small box background-is-primary m-3 p-3">
-                <h2 class="title has-text-weight-light">NEW ENTRY:</h2>
+                <h2 class="title has-text-weight-light has-text-primary">NEW ENTRY:</h2>
                 <form id="create-sl-form">
                     <h3>I spent 
-                        <input id="spendless-amount-input" class="input is-primary mb-2"  type="number" style="width: 35%" placeholder="Enter a number, e.g., 12"> less by 
+                        <input id="spendless-amount-input" class="input is-primary mb-2"  type="number" style="width: 15%" placeholder="e.g., 12"> less by 
 
-                        <input id="spendless-detail-input" class="input is-primary"  type="textarea" style="width: 65%" placeholder="e.g., by not ordering a dessert"> .
+                        <input id="spendless-detail-input" class="input is-primary"  type="textarea" style="width: 45%" placeholder="e.g., by not ordering a dessert"> .
                     </h3>
 
-                        <input id="new-sl-button" class="submit button is-primary m-2 p-2" type="submit"></input>  
+                        <input id="new-sl-button" class="submit button has-background-black has-text-white m-2 p-2" type="submit"></input>  
                 </form>
             </section>
 
@@ -90,7 +90,7 @@
             <section class="section">
                 <div class="container">
                     <div class="box">
-                        <h3 class="title has-text-weight-light has-text-primary">Almost there!</h3>
+                        <h3 class="title has-text-weight-light has-text-primary">ALMOST THERE!</h3>
                         <progress class="has-background-secondary progress" value="15" max="100">15%</progress>
                     </div>
                 </div>
@@ -99,6 +99,8 @@
             <section class="section">
                 <div class="columns is-centered">
                         <div class="column is-narrow">
+                            <h2 class="title has-text-weight-light has-text-primary">HOW DID I SPEND < LESS?</h2>
+                            <!-- <button class="button is-black is-center display-block"id="show-sl-amounts"> Click to view</button> -->
                             <table class="table is-striped is-narrow is-centered" id="sl-table">
                                 <thead>
                                     <tr>
