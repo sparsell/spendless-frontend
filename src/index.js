@@ -11,10 +11,8 @@ const modalBtn = document.getElementById("modal-btn");
 const closeBtn = document.getElementById("delete");
 const totalBtn = document.getElementById("button-total"); 
 
-
-
 //*** start program */
-document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal(), getSLAmounts())
+document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal(), getSLAmounts(), calcDiff())
 // document.addEventListener('DOMContentLoaded', () => getGoal(), getTotal())
 
 modalBtn.addEventListener('click', function() {
@@ -42,7 +40,7 @@ function getGoal() {
                 console.log(showGoal)
                 console.log(goal)
             renderGoal(goal)
-            calcDiff(showGoal)
+            // calcDiff(showGoal)
             
             }) 
         })
@@ -51,8 +49,12 @@ function getGoal() {
     })
 }
 
-function calcDiff(showGoal) {
+let showTotal;
+
+function calcDiff(showGoal, showTotal) {
     console.log(showGoal)
+    let progressToGoal = showGoal - showTotal;
+    console.log(progressToGoal)
 }
 
 
@@ -66,6 +68,7 @@ function renderGoal(goal) {
     goalTotal.appendChild(goalDiv)
     goalInput.style.display = "none"
     showGoal = goal.attributes.goal_amount;
+    console.log(showGoal)
     } else {
         let setGoal = document.createElement('p')
         let setGoalMsg = document.querySelector('.goal-input-msg')
@@ -125,9 +128,12 @@ function getTotal() {
     })
 } 
 
+
 function renderTotal(total) {
         let slTotal = document.querySelector('.sl-total')
         slTotal.innerText = total.attributes.total
+        showTotal = total.attributes.total
+        console.log(showTotal)
 }
 
 // ***Spend less amount section***//
